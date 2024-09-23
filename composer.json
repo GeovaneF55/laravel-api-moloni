@@ -1,0 +1,23 @@
+{
+    "name": "gfonseca/laravel-api-moloni",
+    "description": "A PHP package for interacting with Moloni APIs",
+    "type": "library",
+    "require": {
+        "php": ">=7.4",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gfonseca\\LaravelApiMoloni\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "GeovaneF55",
+            "email": "geovanefss@gmail.com"
+        }
+    ]
+}
