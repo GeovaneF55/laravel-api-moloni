@@ -1,6 +1,7 @@
 {
     "name": "geovanefss/laravel-api-moloni",
     "description": "A PHP package for interacting with Moloni APIs",
+    "license": "MIT",
     "type": "library",
     "require": {
         "php": ">=7.4",
@@ -12,6 +13,11 @@
     "autoload": {
         "psr-4": {
             "Geovanefss\\LaravelApiMoloni\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Geovanefss\\LaravelApiMoloni\\Tests\\": "tests/"
         }
     },
     "authors": [
