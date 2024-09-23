@@ -125,7 +125,7 @@ class ApiClient
     private function isRetryable($exception)
     {
         // Logic for determining if the request should be retried
-        return in_array($exception->getCode(), [429, 500, 502, 503, 504]);
+        return in_array($exception->getCode(), [401, 404, 429, 503]);
     }
 
     /**
