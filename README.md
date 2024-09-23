@@ -1,4 +1,11 @@
-# laravel-api-moloni
+# My PHP API Moloni Client (laravel-api-moloni)
+
+## Installation
+
+```bash
+composer require gfonseca/laravel-api-moloni
+```
+
 
 ## Summary
 
