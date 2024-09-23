@@ -1,5 +1,5 @@
 {
-    "name": "gfonseca/laravel-api-moloni",
+    "name": "geovanefss/laravel-api-moloni",
     "description": "A PHP package for interacting with Moloni APIs",
     "type": "library",
     "require": {
@@ -11,7 +11,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Gfonseca\\LaravelApiMoloni\\": "src/"
+            "Geovanefss\\LaravelApiMoloni\\": "src/"
         }
     },
     "authors": [

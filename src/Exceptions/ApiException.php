@@ -1,5 +1,5 @@
 <?php
-namespace Gfonseca\LaravelApiMoloni\Exceptions;
+namespace Geovanefss\LaravelApiMoloni\Exceptions;
 
 use Exception;
 
