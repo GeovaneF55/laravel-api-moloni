@@ -1,6 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
-use Gfonseca\LaravelApiMoloni\Http\ApiClient;
+use Geovanefss\LaravelApiMoloni\Http\ApiClient;
 
 class ApiClientTest extends TestCase
 {

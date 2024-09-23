@@ -3,9 +3,8 @@
 ## Installation
 
 ```bash
-composer require gfonseca/laravel-api-moloni
+composer require geovanefss/laravel-api-moloni
 ```
-
 
 ## Summary
 

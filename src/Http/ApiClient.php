@@ -1,9 +1,9 @@
 <?php
-namespace Gfonseca\LaravelApiMoloni\Http;
+namespace Geovanefss\LaravelApiMoloni\Http;
 
 use Exception;
 use GuzzleHttp\Client;
-use Gfonseca\LaravelApiMoloni\Exceptions\ApiException;
+use Geovanefss\LaravelApiMoloni\Exceptions\ApiException;
 
 class ApiClient
 {
