@@ -29,8 +29,18 @@ class ValidationException extends Exception
      *
      * @return array
      */
-    public function getErrors()
+    public function getErrors(): array
     {
         return $this->errors;
+    }
+
+    /**
+     * to String
+     *
+     * @return string
+     */
+    public function toString(): string
+    {
+        return json_encode($this->getErrors(), JSON_PRETTY_PRINT);
     }
 }

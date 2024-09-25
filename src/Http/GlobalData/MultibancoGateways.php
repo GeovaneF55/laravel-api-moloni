@@ -1,9 +1,9 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni\Http\GlobalData;
 
-use Geovanefss\LaravelApiMoloni\Http\ApiInterface;
+use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
 
-class MultibancoGateways implements ApiInterface
+class MultibancoGateways extends ApiAbstract
 {
     /**
      * Get Endpoint

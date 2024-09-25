@@ -1,9 +1,9 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni\Http\Settings;
 
-use Geovanefss\LaravelApiMoloni\Http\ApiInterface;
+use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
 
-class IdentificationTemplates implements ApiInterface
+class IdentificationTemplates extends ApiAbstract
 {
     /**
      * Get Endpoint

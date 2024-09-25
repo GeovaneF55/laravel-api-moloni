@@ -1,9 +1,9 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni\Http\Entities;
 
-use Geovanefss\LaravelApiMoloni\Http\ApiInterface;
+use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
 
-class Suppliers implements ApiInterface
+class Suppliers extends ApiAbstract
 {
     /**
      * Get Endpoint

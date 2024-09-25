@@ -1,9 +1,9 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni\Http\Settings;
 
-use Geovanefss\LaravelApiMoloni\Http\ApiInterface;
+use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
 
-class DeliveryMethods implements ApiInterface
+class DeliveryMethods extends ApiAbstract
 {
     /**
      * Get Endpoint

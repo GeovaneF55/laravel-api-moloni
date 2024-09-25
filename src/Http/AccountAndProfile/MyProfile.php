@@ -1,9 +1,9 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni\Http\AccountAndProfile;
 
-use Geovanefss\LaravelApiMoloni\Http\ApiInterface;
+use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
 
-class MyProfile implements ApiInterface
+class MyProfile extends ApiAbstract
 {
     /**
      * Get Endpoint
@@ -53,11 +53,14 @@ class MyProfile implements ApiInterface
     /**
      * Get Me
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
     public function getMe()
     {
         $endpoint = $this->getEndpoint('getMe');
-        // TODO
+
+        return $this->apiClient->postWithRetry($endpoint);
     }
 }

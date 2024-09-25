@@ -1,9 +1,9 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni\Http\Settings;
 
-use Geovanefss\LaravelApiMoloni\Http\ApiInterface;
+use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
 
-class MeasurementUnits implements ApiInterface
+class MeasurementUnits extends ApiAbstract
 {
     /**
      * Get Endpoint

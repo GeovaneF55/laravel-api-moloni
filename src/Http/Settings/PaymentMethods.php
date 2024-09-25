@@ -1,9 +1,9 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni\Http\Settings;
 
-use Geovanefss\LaravelApiMoloni\Http\ApiInterface;
+use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
 
-class PaymentMethods implements ApiInterface
+class PaymentMethods extends ApiAbstract
 {
     /**
      * Get Endpoint

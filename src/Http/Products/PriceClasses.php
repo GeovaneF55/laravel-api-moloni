@@ -1,9 +1,9 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni\Http\Products;
 
-use Geovanefss\LaravelApiMoloni\Http\ApiInterface;
+use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
 
-class PriceClasses implements ApiInterface
+class PriceClasses extends ApiAbstract
 {
     /**
      * Get Endpoint

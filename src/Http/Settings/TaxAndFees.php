@@ -1,9 +1,9 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni\Http\Settings;
 
-use Geovanefss\LaravelApiMoloni\Http\ApiInterface;
+use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
 
-class TaxAndFees implements ApiInterface
+class TaxAndFees extends ApiAbstract
 {
     /**
      * Get Endpoint
