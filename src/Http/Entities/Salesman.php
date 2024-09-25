@@ -1,19 +1,19 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni\Http\Entities;
 
-use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
+use Geovanefss\LaravelApiMoloni\Http\ApiInterface;
 
-class Salesman extends ApiAbstract
+class Salesman implements ApiInterface
 {
     /**
-     * Get URL
+     * Get Endpoint
      *
      * @param string $endpoint
      * @return string
      */
-    public function getUrl(string $endpoint = '')
+    public function getEndpoint(string $endpoint = ''): string
     {
-        return parent::getBaseUrl('salesman/' . $endpoint);
+        return 'salesman/' . $endpoint;
     }
 
     /**
@@ -23,7 +23,7 @@ class Salesman extends ApiAbstract
      */
     public function getAll()
     {
-        $url = $this->getUrl('getAll');
+        $endpoint = $this->getEndpoint('getAll');
         // TODO
     }
 
@@ -34,7 +34,7 @@ class Salesman extends ApiAbstract
      */
     public function getOne()
     {
-        $url = $this->getUrl('getOne');
+        $endpoint = $this->getEndpoint('getOne');
         // TODO
     }
 
@@ -45,7 +45,7 @@ class Salesman extends ApiAbstract
      */
     public function getBySearch()
     {
-        $url = $this->getUrl('getBySearch');
+        $endpoint = $this->getEndpoint('getBySearch');
         // TODO
     }
 
@@ -56,7 +56,7 @@ class Salesman extends ApiAbstract
      */
     public function getByVat()
     {
-        $url = $this->getUrl('getByVat');
+        $endpoint = $this->getEndpoint('getByVat');
         // TODO
     }
 
@@ -67,7 +67,7 @@ class Salesman extends ApiAbstract
      */
     public function getByNumber()
     {
-        $url = $this->getUrl('getByNumber');
+        $endpoint = $this->getEndpoint('getByNumber');
         // TODO
     }
 
@@ -78,7 +78,7 @@ class Salesman extends ApiAbstract
      */
     public function getByEmail()
     {
-        $url = $this->getUrl('getByEmail');
+        $endpoint = $this->getEndpoint('getByEmail');
         // TODO
     }
 
@@ -89,7 +89,7 @@ class Salesman extends ApiAbstract
      */
     public function getByName()
     {
-        $url = $this->getUrl('getByName');
+        $endpoint = $this->getEndpoint('getByName');
         // TODO
     }
 
@@ -100,7 +100,7 @@ class Salesman extends ApiAbstract
      */
     public function getNextNumber()
     {
-        $url = $this->getUrl('getNextNumber');
+        $endpoint = $this->getEndpoint('getNextNumber');
         // TODO
     }
 
@@ -111,7 +111,7 @@ class Salesman extends ApiAbstract
      */
     public function getLastNumber()
     {
-        $url = $this->getUrl('getLastNumber');
+        $endpoint = $this->getEndpoint('getLastNumber');
         // TODO
     }
 
@@ -122,7 +122,7 @@ class Salesman extends ApiAbstract
      */
     public function getModifiedSince()
     {
-        $url = $this->getUrl('getModifiedSince');
+        $endpoint = $this->getEndpoint('getModifiedSince');
         // TODO
     }
 
@@ -133,7 +133,7 @@ class Salesman extends ApiAbstract
      */
     public function count()
     {
-        $url = $this->getUrl('count');
+        $endpoint = $this->getEndpoint('count');
         // TODO
     }
 
@@ -144,7 +144,7 @@ class Salesman extends ApiAbstract
      */
     public function countBySearch()
     {
-        $url = $this->getUrl('countBySearch');
+        $endpoint = $this->getEndpoint('countBySearch');
         // TODO
     }
 
@@ -155,7 +155,7 @@ class Salesman extends ApiAbstract
      */
     public function countByVat()
     {
-        $url = $this->getUrl('countByVat');
+        $endpoint = $this->getEndpoint('countByVat');
         // TODO
     }
 
@@ -166,7 +166,7 @@ class Salesman extends ApiAbstract
      */
     public function countByNumber()
     {
-        $url = $this->getUrl('countByNumber');
+        $endpoint = $this->getEndpoint('countByNumber');
         // TODO
     }
 
@@ -177,7 +177,7 @@ class Salesman extends ApiAbstract
      */
     public function countByEmail()
     {
-        $url = $this->getUrl('countByEmail');
+        $endpoint = $this->getEndpoint('countByEmail');
         // TODO
     }
 
@@ -188,7 +188,7 @@ class Salesman extends ApiAbstract
      */
     public function countByName()
     {
-        $url = $this->getUrl('countByName');
+        $endpoint = $this->getEndpoint('countByName');
         // TODO
     }
 
@@ -199,7 +199,7 @@ class Salesman extends ApiAbstract
      */
     public function countModifiedSince()
     {
-        $url = $this->getUrl('countModifiedSince');
+        $endpoint = $this->getEndpoint('countModifiedSince');
         // TODO
     }
 
@@ -210,7 +210,7 @@ class Salesman extends ApiAbstract
      */
     public function insert()
     {
-        $url = $this->getUrl('insert');
+        $endpoint = $this->getEndpoint('insert');
         // TODO
     }
 
@@ -221,7 +221,7 @@ class Salesman extends ApiAbstract
      */
     public function update()
     {
-        $url = $this->getUrl('update');
+        $endpoint = $this->getEndpoint('update');
         // TODO
     }
 
@@ -232,7 +232,7 @@ class Salesman extends ApiAbstract
      */
     public function delete()
     {
-        $url = $this->getUrl('delete');
+        $endpoint = $this->getEndpoint('delete');
         // TODO
     }
 }

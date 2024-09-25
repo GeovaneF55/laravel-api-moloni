@@ -1,19 +1,19 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni\Http\Company;
 
-use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
+use Geovanefss\LaravelApiMoloni\Http\ApiInterface;
 
-class Users extends ApiAbstract
+class Users implements ApiInterface
 {
     /**
-     * Get URL
+     * Get Endpoint
      *
      * @param string $endpoint
      * @return string
      */
-    public function getUrl(string $endpoint = '')
+    public function getEndpoint(string $endpoint = ''): string
     {
-        return parent::getBaseUrl('users/' . $endpoint);
+        return 'users/' . $endpoint;
     }
 
     /**
@@ -23,7 +23,7 @@ class Users extends ApiAbstract
      */
     public function getAll()
     {
-        $url = $this->getUrl('getAll');
+        $endpoint = $this->getEndpoint('getAll');
         // TODO
     }
 }

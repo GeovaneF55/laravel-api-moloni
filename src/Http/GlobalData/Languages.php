@@ -1,19 +1,19 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni\Http\GlobalData;
 
-use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
+use Geovanefss\LaravelApiMoloni\Http\ApiInterface;
 
-class Languages extends ApiAbstract
+class Languages implements ApiInterface
 {
     /**
-     * Get URL
+     * Get Endpoint
      *
      * @param string $endpoint
      * @return string
      */
-    public function getUrl(string $endpoint = '')
+    public function getEndpoint(string $endpoint = ''): string
     {
-        return parent::getBaseUrl('languages/' . $endpoint);
+        return 'languages/' . $endpoint;
     }
 
     /**
@@ -23,7 +23,7 @@ class Languages extends ApiAbstract
      */
     public function getAll()
     {
-        $url = $this->getUrl('getAll');
+        $endpoint = $this->getEndpoint('getAll');
         // TODO
     }
 }

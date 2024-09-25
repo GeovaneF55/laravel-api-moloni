@@ -1,19 +1,19 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni\Http\GlobalData;
 
-use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
+use Geovanefss\LaravelApiMoloni\Http\ApiInterface;
 
-class TaxExemptions extends ApiAbstract
+class TaxExemptions implements ApiInterface
 {
     /**
-     * Get URL
+     * Get Endpoint
      *
      * @param string $endpoint
      * @return string
      */
-    public function getUrl(string $endpoint = '')
+    public function getEndpoint(string $endpoint = ''): string
     {
-        return parent::getBaseUrl('taxExemptions/' . $endpoint);
+        return 'taxExemptions/' . $endpoint;
     }
 
     /**
@@ -23,7 +23,7 @@ class TaxExemptions extends ApiAbstract
      */
     public function getAll()
     {
-        $url = $this->getUrl('getAll');
+        $endpoint = $this->getEndpoint('getAll');
         // TODO
     }
 
@@ -34,7 +34,7 @@ class TaxExemptions extends ApiAbstract
      */
     public function countModifiedSince()
     {
-        $url = $this->getUrl('countModifiedSince');
+        $endpoint = $this->getEndpoint('countModifiedSince');
         // TODO
     }
 
@@ -45,7 +45,7 @@ class TaxExemptions extends ApiAbstract
      */
     public function getModifiedSince()
     {
-        $url = $this->getUrl('getModifiedSince');
+        $endpoint = $this->getEndpoint('getModifiedSince');
         // TODO
     }
 }

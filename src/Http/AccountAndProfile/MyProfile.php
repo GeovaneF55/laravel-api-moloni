@@ -1,19 +1,19 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni\Http\AccountAndProfile;
 
-use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
+use Geovanefss\LaravelApiMoloni\Http\ApiInterface;
 
-class MyProfile extends ApiAbstract
+class MyProfile implements ApiInterface
 {
     /**
-     * Get URL
+     * Get Endpoint
      *
      * @param string $endpoint
      * @return string
      */
-    public function getUrl(string $endpoint = '')
+    public function getEndpoint(string $endpoint = ''): string
     {
-        return parent::getBaseUrl('users/' . $endpoint);
+        return 'users/' . $endpoint;
     }
 
     /**
@@ -23,7 +23,7 @@ class MyProfile extends ApiAbstract
      */
     public function signUp()
     {
-        $url = $this->getUrl('signUp');
+        $endpoint = $this->getEndpoint('signUp');
 
         // TODO
     }
@@ -35,7 +35,7 @@ class MyProfile extends ApiAbstract
      */
     public function recoverPassword()
     {
-        $url = $this->getUrl('recoverPassword');
+        $endpoint = $this->getEndpoint('recoverPassword');
         // TODO
     }
 
@@ -46,7 +46,7 @@ class MyProfile extends ApiAbstract
      */
     public function updateMe()
     {
-        $url = $this->getUrl('updateMe');
+        $endpoint = $this->getEndpoint('updateMe');
         // TODO
     }
 
@@ -57,7 +57,7 @@ class MyProfile extends ApiAbstract
      */
     public function getMe()
     {
-        $url = $this->getUrl('getMe');
+        $endpoint = $this->getEndpoint('getMe');
         // TODO
     }
 }

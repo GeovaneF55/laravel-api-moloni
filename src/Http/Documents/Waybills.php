@@ -1,19 +1,19 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni\Http\Documents;
 
-use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
+use Geovanefss\LaravelApiMoloni\Http\ApiInterface;
 
-class Waybills extends ApiAbstract
+class Waybills implements ApiInterface
 {
     /**
-     * Get URL
+     * Get Endpoint
      *
      * @param string $endpoint
      * @return string
      */
-    public function getUrl(string $endpoint = '')
+    public function getEndpoint(string $endpoint = ''): string
     {
-        return parent::getBaseUrl('waybills/' . $endpoint);
+        return 'waybills/' . $endpoint;
     }
 
     /**
@@ -23,7 +23,7 @@ class Waybills extends ApiAbstract
      */
     public function count()
     {
-        $url = $this->getUrl('count');
+        $endpoint = $this->getEndpoint('count');
         // TODO
     }
 
@@ -34,7 +34,7 @@ class Waybills extends ApiAbstract
      */
     public function getAll()
     {
-        $url = $this->getUrl('getAll');
+        $endpoint = $this->getEndpoint('getAll');
         // TODO
     }
 
@@ -45,7 +45,7 @@ class Waybills extends ApiAbstract
      */
     public function getOne()
     {
-        $url = $this->getUrl('getOne');
+        $endpoint = $this->getEndpoint('getOne');
         // TODO
     }
 
@@ -56,7 +56,7 @@ class Waybills extends ApiAbstract
      */
     public function insert()
     {
-        $url = $this->getUrl('insert');
+        $endpoint = $this->getEndpoint('insert');
         // TODO
     }
 
@@ -67,7 +67,7 @@ class Waybills extends ApiAbstract
      */
     public function update()
     {
-        $url = $this->getUrl('update');
+        $endpoint = $this->getEndpoint('update');
         // TODO
     }
 
@@ -78,7 +78,7 @@ class Waybills extends ApiAbstract
      */
     public function delete()
     {
-        $url = $this->getUrl('delete');
+        $endpoint = $this->getEndpoint('delete');
         // TODO
     }
 
@@ -89,7 +89,7 @@ class Waybills extends ApiAbstract
      */
     public function setTransportCode()
     {
-        $url = $this->getUrl('setTransportCode');
+        $endpoint = $this->getEndpoint('setTransportCode');
         // TODO
     }
 }

@@ -1,19 +1,19 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni\Http\Documents;
 
-use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
+use Geovanefss\LaravelApiMoloni\Http\ApiInterface;
 
-class Documents extends ApiAbstract
+class Documents implements ApiInterface
 {
     /**
-     * Get URL
+     * Get Endpoint
      *
      * @param string $endpoint
      * @return string
      */
-    public function getUrl(string $endpoint = '')
+    public function getEndpoint(string $endpoint = ''): string
     {
-        return parent::getBaseUrl('documents/' . $endpoint);
+        return 'documents/' . $endpoint;
     }
 
     /**
@@ -23,7 +23,7 @@ class Documents extends ApiAbstract
      */
     public function getAllDocumentTypes()
     {
-        $url = $this->getUrl('getAllDocumentTypes');
+        $endpoint = $this->getEndpoint('getAllDocumentTypes');
         // TODO
     }
 
@@ -34,7 +34,7 @@ class Documents extends ApiAbstract
      */
     public function getByMBReference()
     {
-        $url = $this->getUrl('getByMBReference');
+        $endpoint = $this->getEndpoint('getByMBReference');
         // TODO
     }
 
@@ -45,7 +45,7 @@ class Documents extends ApiAbstract
      */
     public function setMBReferenceAsPaid()
     {
-        $url = $this->getUrl('setMBReferenceAsPaid');
+        $endpoint = $this->getEndpoint('setMBReferenceAsPaid');
         // TODO
     }
 
@@ -56,7 +56,7 @@ class Documents extends ApiAbstract
      */
     public function count()
     {
-        $url = $this->getUrl('count');
+        $endpoint = $this->getEndpoint('count');
         // TODO
     }
 
@@ -67,7 +67,7 @@ class Documents extends ApiAbstract
      */
     public function getAll()
     {
-        $url = $this->getUrl('getAll');
+        $endpoint = $this->getEndpoint('getAll');
         // TODO
     }
 
@@ -78,7 +78,7 @@ class Documents extends ApiAbstract
      */
     public function getOne()
     {
-        $url = $this->getUrl('getOne');
+        $endpoint = $this->getEndpoint('getOne');
         // TODO
     }
 
@@ -89,7 +89,7 @@ class Documents extends ApiAbstract
      */
     public function getPDFLink()
     {
-        $url = $this->getUrl('getPDFLink');
+        $endpoint = $this->getEndpoint('getPDFLink');
         // TODO
     }
 
@@ -100,7 +100,7 @@ class Documents extends ApiAbstract
      */
     public function countModifiedSince()
     {
-        $url = $this->getUrl('countModifiedSince');
+        $endpoint = $this->getEndpoint('countModifiedSince');
         // TODO
     }
 
@@ -111,7 +111,7 @@ class Documents extends ApiAbstract
      */
     public function getModifiedSince()
     {
-        $url = $this->getUrl('getModifiedSince');
+        $endpoint = $this->getEndpoint('getModifiedSince');
         // TODO
     }
 
@@ -122,7 +122,7 @@ class Documents extends ApiAbstract
      */
     public function deleteMBReference()
     {
-        $url = $this->getUrl('deleteMBReference');
+        $endpoint = $this->getEndpoint('deleteMBReference');
         // TODO
     }
 
@@ -133,7 +133,7 @@ class Documents extends ApiAbstract
      */
     public function documentCancel()
     {
-        $url = $this->getUrl('documentCancel');
+        $endpoint = $this->getEndpoint('documentCancel');
         // TODO
     }
 
@@ -144,7 +144,7 @@ class Documents extends ApiAbstract
      */
     public function documentDraft()
     {
-        $url = $this->getUrl('documentDraft');
+        $endpoint = $this->getEndpoint('documentDraft');
         // TODO
     }
 }

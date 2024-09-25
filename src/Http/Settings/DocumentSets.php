@@ -1,19 +1,19 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni\Http\Settings;
 
-use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
+use Geovanefss\LaravelApiMoloni\Http\ApiInterface;
 
-class DocumentSets extends ApiAbstract
+class DocumentSets implements ApiInterface
 {
     /**
-     * Get URL
+     * Get Endpoint
      *
      * @param string $endpoint
      * @return string
      */
-    public function getUrl(string $endpoint = '')
+    public function getEndpoint(string $endpoint = ''): string
     {
-        return parent::getBaseUrl('documentSets/' . $endpoint);
+        return 'documentSets/' . $endpoint;
     }
 
     /**
@@ -23,7 +23,7 @@ class DocumentSets extends ApiAbstract
      */
     public function getAll()
     {
-        $url = $this->getUrl('getAll');
+        $endpoint = $this->getEndpoint('getAll');
         // TODO
     }
 
@@ -34,7 +34,7 @@ class DocumentSets extends ApiAbstract
      */
     public function insert()
     {
-        $url = $this->getUrl('insert');
+        $endpoint = $this->getEndpoint('insert');
         // TODO
     }
 
@@ -45,7 +45,7 @@ class DocumentSets extends ApiAbstract
      */
     public function update()
     {
-        $url = $this->getUrl('update');
+        $endpoint = $this->getEndpoint('update');
         // TODO
     }
 
@@ -56,7 +56,7 @@ class DocumentSets extends ApiAbstract
      */
     public function delete()
     {
-        $url = $this->getUrl('delete');
+        $endpoint = $this->getEndpoint('delete');
         // TODO
     }
 
@@ -67,7 +67,7 @@ class DocumentSets extends ApiAbstract
      */
     public function countModifiedSince()
     {
-        $url = $this->getUrl('countModifiedSince');
+        $endpoint = $this->getEndpoint('countModifiedSince');
         // TODO
     }
 
@@ -78,7 +78,7 @@ class DocumentSets extends ApiAbstract
      */
     public function getModifiedSince()
     {
-        $url = $this->getUrl('getModifiedSince');
+        $endpoint = $this->getEndpoint('getModifiedSince');
         // TODO
     }
 
@@ -89,7 +89,7 @@ class DocumentSets extends ApiAbstract
      */
     public function aTInsertCode()
     {
-        $url = $this->getUrl('aTInsertCode');
+        $endpoint = $this->getEndpoint('aTInsertCode');
         // TODO
     }
 
@@ -100,7 +100,7 @@ class DocumentSets extends ApiAbstract
      */
     public function aTInsertCodeBulk()
     {
-        $url = $this->getUrl('aTInsertCodeBulk');
+        $endpoint = $this->getEndpoint('aTInsertCodeBulk');
         // TODO
     }
 }
