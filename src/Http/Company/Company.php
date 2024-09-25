@@ -23,7 +23,7 @@ class Company extends ApiAbstract
      */
     public function freeSlug()
     {
-        $endpoint = $this->getEndpoint('freeSlug');
+        $endpoint = $this->getEndpoint('freeSlug/');
         // TODO
     }
 
@@ -34,7 +34,7 @@ class Company extends ApiAbstract
      */
     public function getAll()
     {
-        $endpoint = $this->getEndpoint('getAll');
+        $endpoint = $this->getEndpoint('getAll/');
         // TODO
     }
 
@@ -45,7 +45,7 @@ class Company extends ApiAbstract
      */
     public function getOne()
     {
-        $endpoint = $this->getEndpoint('getOne');
+        $endpoint = $this->getEndpoint('getOne/');
         // TODO
     }
 }

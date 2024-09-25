@@ -23,7 +23,7 @@ class Salesman extends ApiAbstract
      */
     public function getAll()
     {
-        $endpoint = $this->getEndpoint('getAll');
+        $endpoint = $this->getEndpoint('getAll/');
         // TODO
     }
 
@@ -34,7 +34,7 @@ class Salesman extends ApiAbstract
      */
     public function getOne()
     {
-        $endpoint = $this->getEndpoint('getOne');
+        $endpoint = $this->getEndpoint('getOne/');
         // TODO
     }
 
@@ -45,7 +45,7 @@ class Salesman extends ApiAbstract
      */
     public function getBySearch()
     {
-        $endpoint = $this->getEndpoint('getBySearch');
+        $endpoint = $this->getEndpoint('getBySearch/');
         // TODO
     }
 
@@ -56,7 +56,7 @@ class Salesman extends ApiAbstract
      */
     public function getByVat()
     {
-        $endpoint = $this->getEndpoint('getByVat');
+        $endpoint = $this->getEndpoint('getByVat/');
         // TODO
     }
 
@@ -67,7 +67,7 @@ class Salesman extends ApiAbstract
      */
     public function getByNumber()
     {
-        $endpoint = $this->getEndpoint('getByNumber');
+        $endpoint = $this->getEndpoint('getByNumber/');
         // TODO
     }
 
@@ -78,7 +78,7 @@ class Salesman extends ApiAbstract
      */
     public function getByEmail()
     {
-        $endpoint = $this->getEndpoint('getByEmail');
+        $endpoint = $this->getEndpoint('getByEmail/');
         // TODO
     }
 
@@ -89,7 +89,7 @@ class Salesman extends ApiAbstract
      */
     public function getByName()
     {
-        $endpoint = $this->getEndpoint('getByName');
+        $endpoint = $this->getEndpoint('getByName/');
         // TODO
     }
 
@@ -100,7 +100,7 @@ class Salesman extends ApiAbstract
      */
     public function getNextNumber()
     {
-        $endpoint = $this->getEndpoint('getNextNumber');
+        $endpoint = $this->getEndpoint('getNextNumber/');
         // TODO
     }
 
@@ -111,7 +111,7 @@ class Salesman extends ApiAbstract
      */
     public function getLastNumber()
     {
-        $endpoint = $this->getEndpoint('getLastNumber');
+        $endpoint = $this->getEndpoint('getLastNumber/');
         // TODO
     }
 
@@ -122,7 +122,7 @@ class Salesman extends ApiAbstract
      */
     public function getModifiedSince()
     {
-        $endpoint = $this->getEndpoint('getModifiedSince');
+        $endpoint = $this->getEndpoint('getModifiedSince/');
         // TODO
     }
 
@@ -133,7 +133,7 @@ class Salesman extends ApiAbstract
      */
     public function count()
     {
-        $endpoint = $this->getEndpoint('count');
+        $endpoint = $this->getEndpoint('count/');
         // TODO
     }
 
@@ -144,7 +144,7 @@ class Salesman extends ApiAbstract
      */
     public function countBySearch()
     {
-        $endpoint = $this->getEndpoint('countBySearch');
+        $endpoint = $this->getEndpoint('countBySearch/');
         // TODO
     }
 
@@ -155,7 +155,7 @@ class Salesman extends ApiAbstract
      */
     public function countByVat()
     {
-        $endpoint = $this->getEndpoint('countByVat');
+        $endpoint = $this->getEndpoint('countByVat/');
         // TODO
     }
 
@@ -166,7 +166,7 @@ class Salesman extends ApiAbstract
      */
     public function countByNumber()
     {
-        $endpoint = $this->getEndpoint('countByNumber');
+        $endpoint = $this->getEndpoint('countByNumber/');
         // TODO
     }
 
@@ -177,7 +177,7 @@ class Salesman extends ApiAbstract
      */
     public function countByEmail()
     {
-        $endpoint = $this->getEndpoint('countByEmail');
+        $endpoint = $this->getEndpoint('countByEmail/');
         // TODO
     }
 
@@ -188,7 +188,7 @@ class Salesman extends ApiAbstract
      */
     public function countByName()
     {
-        $endpoint = $this->getEndpoint('countByName');
+        $endpoint = $this->getEndpoint('countByName/');
         // TODO
     }
 
@@ -199,7 +199,7 @@ class Salesman extends ApiAbstract
      */
     public function countModifiedSince()
     {
-        $endpoint = $this->getEndpoint('countModifiedSince');
+        $endpoint = $this->getEndpoint('countModifiedSince/');
         // TODO
     }
 
@@ -210,7 +210,7 @@ class Salesman extends ApiAbstract
      */
     public function insert()
     {
-        $endpoint = $this->getEndpoint('insert');
+        $endpoint = $this->getEndpoint('insert/');
         // TODO
     }
 
@@ -221,7 +221,7 @@ class Salesman extends ApiAbstract
      */
     public function update()
     {
-        $endpoint = $this->getEndpoint('update');
+        $endpoint = $this->getEndpoint('update/');
         // TODO
     }
 
@@ -232,7 +232,7 @@ class Salesman extends ApiAbstract
      */
     public function delete()
     {
-        $endpoint = $this->getEndpoint('delete');
+        $endpoint = $this->getEndpoint('delete/');
         // TODO
     }
 }

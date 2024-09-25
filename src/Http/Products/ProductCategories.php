@@ -23,7 +23,7 @@ class ProductCategories extends ApiAbstract
      */
     public function getAll()
     {
-        $endpoint = $this->getEndpoint('getAll');
+        $endpoint = $this->getEndpoint('getAll/');
         // TODO
     }
 
@@ -34,7 +34,7 @@ class ProductCategories extends ApiAbstract
      */
     public function getOne()
     {
-        $endpoint = $this->getEndpoint('getOne');
+        $endpoint = $this->getEndpoint('getOne/');
         // TODO
     }
 
@@ -45,7 +45,7 @@ class ProductCategories extends ApiAbstract
      */
     public function insert()
     {
-        $endpoint = $this->getEndpoint('insert');
+        $endpoint = $this->getEndpoint('insert/');
         // TODO
     }
 
@@ -56,7 +56,7 @@ class ProductCategories extends ApiAbstract
      */
     public function update()
     {
-        $endpoint = $this->getEndpoint('update');
+        $endpoint = $this->getEndpoint('update/');
         // TODO
     }
 
@@ -67,7 +67,7 @@ class ProductCategories extends ApiAbstract
      */
     public function delete()
     {
-        $endpoint = $this->getEndpoint('delete');
+        $endpoint = $this->getEndpoint('delete/');
         // TODO
     }
 }

@@ -23,7 +23,7 @@ class Products extends ApiAbstract
      */
     public function count()
     {
-        $endpoint = $this->getEndpoint('count');
+        $endpoint = $this->getEndpoint('count/');
         // TODO
     }
 
@@ -34,7 +34,7 @@ class Products extends ApiAbstract
      */
     public function getAll()
     {
-        $endpoint = $this->getEndpoint('getAll');
+        $endpoint = $this->getEndpoint('getAll/');
         // TODO
     }
 
@@ -45,7 +45,7 @@ class Products extends ApiAbstract
      */
     public function getOne()
     {
-        $endpoint = $this->getEndpoint('getOne');
+        $endpoint = $this->getEndpoint('getOne/');
         // TODO
     }
 
@@ -56,7 +56,7 @@ class Products extends ApiAbstract
      */
     public function countBySearch()
     {
-        $endpoint = $this->getEndpoint('countBySearch');
+        $endpoint = $this->getEndpoint('countBySearch/');
         // TODO
     }
 
@@ -67,7 +67,7 @@ class Products extends ApiAbstract
      */
     public function getBySearch()
     {
-        $endpoint = $this->getEndpoint('getBySearch');
+        $endpoint = $this->getEndpoint('getBySearch/');
         // TODO
     }
 
@@ -78,7 +78,7 @@ class Products extends ApiAbstract
      */
     public function countByName()
     {
-        $endpoint = $this->getEndpoint('countByName');
+        $endpoint = $this->getEndpoint('countByName/');
         // TODO
     }
 
@@ -89,7 +89,7 @@ class Products extends ApiAbstract
      */
     public function getByName()
     {
-        $endpoint = $this->getEndpoint('getByName');
+        $endpoint = $this->getEndpoint('getByName/');
         // TODO
     }
 
@@ -100,7 +100,7 @@ class Products extends ApiAbstract
      */
     public function countByReference()
     {
-        $endpoint = $this->getEndpoint('countByReference');
+        $endpoint = $this->getEndpoint('countByReference/');
         // TODO
     }
 
@@ -111,7 +111,7 @@ class Products extends ApiAbstract
      */
     public function getByReference()
     {
-        $endpoint = $this->getEndpoint('getByReference');
+        $endpoint = $this->getEndpoint('getByReference/');
         // TODO
     }
 
@@ -122,7 +122,7 @@ class Products extends ApiAbstract
      */
     public function countByEAN()
     {
-        $endpoint = $this->getEndpoint('countByEAN');
+        $endpoint = $this->getEndpoint('countByEAN/');
         // TODO
     }
 
@@ -133,7 +133,7 @@ class Products extends ApiAbstract
      */
     public function getByEAN()
     {
-        $endpoint = $this->getEndpoint('getByEAN');
+        $endpoint = $this->getEndpoint('getByEAN/');
         // TODO
     }
 
@@ -144,7 +144,7 @@ class Products extends ApiAbstract
      */
     public function countModifiedSince()
     {
-        $endpoint = $this->getEndpoint('countModifiedSince');
+        $endpoint = $this->getEndpoint('countModifiedSince/');
         // TODO
     }
 
@@ -155,7 +155,7 @@ class Products extends ApiAbstract
      */
     public function getModifiedSince()
     {
-        $endpoint = $this->getEndpoint('getModifiedSince');
+        $endpoint = $this->getEndpoint('getModifiedSince/');
         // TODO
     }
 
@@ -166,7 +166,7 @@ class Products extends ApiAbstract
      */
     public function getLastCostPrice()
     {
-        $endpoint = $this->getEndpoint('getLastCostPrice');
+        $endpoint = $this->getEndpoint('getLastCostPrice/');
         // TODO
     }
 
@@ -177,7 +177,7 @@ class Products extends ApiAbstract
      */
     public function insert()
     {
-        $endpoint = $this->getEndpoint('insert');
+        $endpoint = $this->getEndpoint('insert/');
         // TODO
     }
 
@@ -188,7 +188,7 @@ class Products extends ApiAbstract
      */
     public function update()
     {
-        $endpoint = $this->getEndpoint('update');
+        $endpoint = $this->getEndpoint('update/');
         // TODO
     }
 
@@ -199,7 +199,7 @@ class Products extends ApiAbstract
      */
     public function delete()
     {
-        $endpoint = $this->getEndpoint('delete');
+        $endpoint = $this->getEndpoint('delete/');
         // TODO
     }
 
@@ -210,7 +210,7 @@ class Products extends ApiAbstract
      */
     public function getNextReference()
     {
-        $endpoint = $this->getEndpoint('getNextReference');
+        $endpoint = $this->getEndpoint('getNextReference/');
         // TODO
     }
 }

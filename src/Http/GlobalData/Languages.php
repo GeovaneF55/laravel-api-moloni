@@ -23,7 +23,7 @@ class Languages extends ApiAbstract
      */
     public function getAll()
     {
-        $endpoint = $this->getEndpoint('getAll');
+        $endpoint = $this->getEndpoint('getAll/');
         // TODO
     }
 }

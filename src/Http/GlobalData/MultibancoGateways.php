@@ -23,7 +23,7 @@ class MultibancoGateways extends ApiAbstract
      */
     public function getAll()
     {
-        $endpoint = $this->getEndpoint('getAll');
+        $endpoint = $this->getEndpoint('getAll/');
         // TODO
     }
 
@@ -34,7 +34,7 @@ class MultibancoGateways extends ApiAbstract
      */
     public function getModifiedSince()
     {
-        $endpoint = $this->getEndpoint('getModifiedSince');
+        $endpoint = $this->getEndpoint('getModifiedSince/');
         // TODO
     }
 }

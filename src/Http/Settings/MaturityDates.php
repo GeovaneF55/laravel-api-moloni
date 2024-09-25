@@ -23,7 +23,7 @@ class MaturityDates extends ApiAbstract
      */
     public function getAll()
     {
-        $endpoint = $this->getEndpoint('getAll');
+        $endpoint = $this->getEndpoint('getAll/');
         // TODO
     }
 
@@ -34,7 +34,7 @@ class MaturityDates extends ApiAbstract
      */
     public function insert()
     {
-        $endpoint = $this->getEndpoint('insert');
+        $endpoint = $this->getEndpoint('insert/');
         // TODO
     }
 
@@ -45,7 +45,7 @@ class MaturityDates extends ApiAbstract
      */
     public function update()
     {
-        $endpoint = $this->getEndpoint('update');
+        $endpoint = $this->getEndpoint('update/');
         // TODO
     }
 
@@ -56,7 +56,7 @@ class MaturityDates extends ApiAbstract
      */
     public function delete()
     {
-        $endpoint = $this->getEndpoint('delete');
+        $endpoint = $this->getEndpoint('delete/');
         // TODO
     }
 
@@ -67,7 +67,7 @@ class MaturityDates extends ApiAbstract
      */
     public function countModifiedSince()
     {
-        $endpoint = $this->getEndpoint('countModifiedSince');
+        $endpoint = $this->getEndpoint('countModifiedSince/');
         // TODO
     }
 
@@ -78,7 +78,7 @@ class MaturityDates extends ApiAbstract
      */
     public function getModifiedSince()
     {
-        $endpoint = $this->getEndpoint('getModifiedSince');
+        $endpoint = $this->getEndpoint('getModifiedSince/');
         // TODO
     }
 }

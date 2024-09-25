@@ -23,7 +23,7 @@ class MyProfile extends ApiAbstract
      */
     public function signUp()
     {
-        $endpoint = $this->getEndpoint('signUp');
+        $endpoint = $this->getEndpoint('signUp/');
 
         // TODO
     }
@@ -35,7 +35,7 @@ class MyProfile extends ApiAbstract
      */
     public function recoverPassword()
     {
-        $endpoint = $this->getEndpoint('recoverPassword');
+        $endpoint = $this->getEndpoint('recoverPassword/');
         // TODO
     }
 
@@ -46,7 +46,7 @@ class MyProfile extends ApiAbstract
      */
     public function updateMe()
     {
-        $endpoint = $this->getEndpoint('updateMe');
+        $endpoint = $this->getEndpoint('updateMe/');
         // TODO
     }
 
@@ -59,7 +59,7 @@ class MyProfile extends ApiAbstract
      */
     public function getMe()
     {
-        $endpoint = $this->getEndpoint('getMe');
+        $endpoint = $this->getEndpoint('getMe/');
 
         return $this->apiClient->postWithRetry($endpoint);
     }

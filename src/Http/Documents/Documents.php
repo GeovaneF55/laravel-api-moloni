@@ -23,7 +23,7 @@ class Documents extends ApiAbstract
      */
     public function getAllDocumentTypes()
     {
-        $endpoint = $this->getEndpoint('getAllDocumentTypes');
+        $endpoint = $this->getEndpoint('getAllDocumentTypes/');
         // TODO
     }
 
@@ -34,7 +34,7 @@ class Documents extends ApiAbstract
      */
     public function getByMBReference()
     {
-        $endpoint = $this->getEndpoint('getByMBReference');
+        $endpoint = $this->getEndpoint('getByMBReference/');
         // TODO
     }
 
@@ -45,7 +45,7 @@ class Documents extends ApiAbstract
      */
     public function setMBReferenceAsPaid()
     {
-        $endpoint = $this->getEndpoint('setMBReferenceAsPaid');
+        $endpoint = $this->getEndpoint('setMBReferenceAsPaid/');
         // TODO
     }
 
@@ -56,7 +56,7 @@ class Documents extends ApiAbstract
      */
     public function count()
     {
-        $endpoint = $this->getEndpoint('count');
+        $endpoint = $this->getEndpoint('count/');
         // TODO
     }
 
@@ -67,7 +67,7 @@ class Documents extends ApiAbstract
      */
     public function getAll()
     {
-        $endpoint = $this->getEndpoint('getAll');
+        $endpoint = $this->getEndpoint('getAll/');
         // TODO
     }
 
@@ -78,7 +78,7 @@ class Documents extends ApiAbstract
      */
     public function getOne()
     {
-        $endpoint = $this->getEndpoint('getOne');
+        $endpoint = $this->getEndpoint('getOne/');
         // TODO
     }
 
@@ -89,7 +89,7 @@ class Documents extends ApiAbstract
      */
     public function getPDFLink()
     {
-        $endpoint = $this->getEndpoint('getPDFLink');
+        $endpoint = $this->getEndpoint('getPDFLink/');
         // TODO
     }
 
@@ -100,7 +100,7 @@ class Documents extends ApiAbstract
      */
     public function countModifiedSince()
     {
-        $endpoint = $this->getEndpoint('countModifiedSince');
+        $endpoint = $this->getEndpoint('countModifiedSince/');
         // TODO
     }
 
@@ -111,7 +111,7 @@ class Documents extends ApiAbstract
      */
     public function getModifiedSince()
     {
-        $endpoint = $this->getEndpoint('getModifiedSince');
+        $endpoint = $this->getEndpoint('getModifiedSince/');
         // TODO
     }
 
@@ -122,7 +122,7 @@ class Documents extends ApiAbstract
      */
     public function deleteMBReference()
     {
-        $endpoint = $this->getEndpoint('deleteMBReference');
+        $endpoint = $this->getEndpoint('deleteMBReference/');
         // TODO
     }
 
@@ -133,7 +133,7 @@ class Documents extends ApiAbstract
      */
     public function documentCancel()
     {
-        $endpoint = $this->getEndpoint('documentCancel');
+        $endpoint = $this->getEndpoint('documentCancel/');
         // TODO
     }
 
@@ -144,7 +144,7 @@ class Documents extends ApiAbstract
      */
     public function documentDraft()
     {
-        $endpoint = $this->getEndpoint('documentDraft');
+        $endpoint = $this->getEndpoint('documentDraft/');
         // TODO
     }
 }

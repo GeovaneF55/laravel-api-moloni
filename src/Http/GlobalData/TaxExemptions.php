@@ -23,7 +23,7 @@ class TaxExemptions extends ApiAbstract
      */
     public function getAll()
     {
-        $endpoint = $this->getEndpoint('getAll');
+        $endpoint = $this->getEndpoint('getAll/');
         // TODO
     }
 
@@ -34,7 +34,7 @@ class TaxExemptions extends ApiAbstract
      */
     public function countModifiedSince()
     {
-        $endpoint = $this->getEndpoint('countModifiedSince');
+        $endpoint = $this->getEndpoint('countModifiedSince/');
         // TODO
     }
 
@@ -45,7 +45,7 @@ class TaxExemptions extends ApiAbstract
      */
     public function getModifiedSince()
     {
-        $endpoint = $this->getEndpoint('getModifiedSince');
+        $endpoint = $this->getEndpoint('getModifiedSince/');
         // TODO
     }
 }

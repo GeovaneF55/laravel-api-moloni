@@ -23,7 +23,7 @@ class CustomerReturnNote extends ApiAbstract
      */
     public function count()
     {
-        $endpoint = $this->getEndpoint('count');
+        $endpoint = $this->getEndpoint('count/');
         // TODO
     }
 
@@ -34,7 +34,7 @@ class CustomerReturnNote extends ApiAbstract
      */
     public function getAll()
     {
-        $endpoint = $this->getEndpoint('getAll');
+        $endpoint = $this->getEndpoint('getAll/');
         // TODO
     }
 
@@ -45,7 +45,7 @@ class CustomerReturnNote extends ApiAbstract
      */
     public function getOne()
     {
-        $endpoint = $this->getEndpoint('getOne');
+        $endpoint = $this->getEndpoint('getOne/');
         // TODO
     }
 
@@ -56,7 +56,7 @@ class CustomerReturnNote extends ApiAbstract
      */
     public function insert()
     {
-        $endpoint = $this->getEndpoint('insert');
+        $endpoint = $this->getEndpoint('insert/');
         // TODO
     }
 
@@ -67,7 +67,7 @@ class CustomerReturnNote extends ApiAbstract
      */
     public function update()
     {
-        $endpoint = $this->getEndpoint('update');
+        $endpoint = $this->getEndpoint('update/');
         // TODO
     }
 
@@ -78,7 +78,7 @@ class CustomerReturnNote extends ApiAbstract
      */
     public function delete()
     {
-        $endpoint = $this->getEndpoint('delete');
+        $endpoint = $this->getEndpoint('delete/');
         // TODO
     }
 
@@ -89,7 +89,7 @@ class CustomerReturnNote extends ApiAbstract
      */
     public function setTransportCode()
     {
-        $endpoint = $this->getEndpoint('setTransportCode');
+        $endpoint = $this->getEndpoint('setTransportCode/');
         // TODO
     }
 }
