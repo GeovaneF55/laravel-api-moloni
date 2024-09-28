@@ -33,8 +33,8 @@ try {
         'client_id' => getenv('MOLONI_CLIENT_ID') ?? 'test_client_id',                        # Required
         'client_secret' => getenv('MOLONI_CLIENT_SECRET') ?? 'test_client_secret',            # Required
         # 'response_type' => getenv('MOLONI_RESPONSE_TYPE') ?? 'code',                        # Future improvement
-        'redirect_uri' => getenv('MOLONI_REDIRECT_URI') ?? 'https://example.com/callback',    # Future improvement
-        'authorization_code' => getenv('MOLONI_AUTHORIZATION_CODE') ?? 'test_auth_code',      # Future improvement
+        # 'redirect_uri' => getenv('MOLONI_REDIRECT_URI') ?? 'https://example.com/callback',  # Future improvement
+        # 'authorization_code' => getenv('MOLONI_AUTHORIZATION_CODE') ?? 'test_auth_code',    # Future improvement
         'username' => getenv('MOLONI_USERNAME') ?? 'test_user',                               # Required
         'password' => getenv('MOLONI_PASSWORD') ?? 'test_password'                            # Required
     ];
