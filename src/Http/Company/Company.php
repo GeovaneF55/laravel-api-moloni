@@ -19,12 +19,20 @@ class Company extends ApiAbstract
     /**
      * Free Slug
      *
+     * @param array $data
      * @return mixed
      */
-    public function freeSlug()
+    public function freeSlug(array $data)
     {
         $endpoint = $this->getEndpoint('freeSlug/');
-        // TODO
+        
+        $rules = [
+            'slug' => ['required', 'string']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -35,17 +43,26 @@ class Company extends ApiAbstract
     public function getAll()
     {
         $endpoint = $this->getEndpoint('getAll/');
-        // TODO
+
+        return $this->apiClient->postWithRetry($endpoint);
     }
 
     /**
      * Get One
      *
+     * @param array $data
      * @return mixed
      */
-    public function getOne()
+    public function getOne(array $data)
     {
         $endpoint = $this->getEndpoint('getOne/');
-        // TODO
+
+        $rules = [
+            'company_id' => ['required', 'numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 }

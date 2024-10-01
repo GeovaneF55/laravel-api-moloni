@@ -19,11 +19,19 @@ class Subscription extends ApiAbstract
     /**
      * Get One
      *
+     * @param array $data
      * @return mixed
      */
-    public function getOne()
+    public function getOne(array $data)
     {
         $endpoint = $this->getEndpoint('getOne/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 }

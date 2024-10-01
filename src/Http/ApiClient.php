@@ -8,6 +8,7 @@ use Geovanefss\LaravelApiMoloni\Exceptions\ValidationException;
 use Geovanefss\LaravelApiMoloni\Http\HttpClient;
 use Geovanefss\LaravelApiMoloni\Http\TokenManager;
 use Geovanefss\LaravelApiMoloni\Validators\Validator;
+use GuzzleHttp\RequestOptions;
 
 class ApiClient
 {
@@ -232,7 +233,9 @@ class ApiClient
      */
     public function getWithRetry(string $endpoint, array $query = [], int $retry = 3)
     {
-        return $this->requestWithRetry('GET', $endpoint, ['query' => $query], $retry - 1);
+        return $this->requestWithRetry('GET', $endpoint, [
+            RequestOptions::QUERY => $query
+        ], $retry - 1);
     }
 
     /**
@@ -248,8 +251,8 @@ class ApiClient
     public function postWithRetry(string $endpoint, array $data = [], array $query = [], int $retry = 3)
     {
         return $this->requestWithRetry('POST', $endpoint, [
-            'json' => $data,
-            'query' => $query
+            RequestOptions::JSON => $data,
+            RequestOptions::QUERY => $query
         ], $retry - 1);
     }
 
