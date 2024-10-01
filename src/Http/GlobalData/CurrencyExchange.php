@@ -24,17 +24,26 @@ class CurrencyExchange extends ApiAbstract
     public function getAll()
     {
         $endpoint = $this->getEndpoint('getAll/');
-        // TODO
+        
+        return $this->apiClient->postWithRetry($endpoint);
     }
 
     /**
      * Get Modified Since
      *
+     * @param array $data
      * @return mixed
      */
-    public function getModifiedSince()
+    public function getModifiedSince(array $data)
     {
         $endpoint = $this->getEndpoint('getModifiedSince/');
-        // TODO
+
+        $rules = [
+            'lastmodified' => ['required', 'date']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 }

@@ -19,11 +19,19 @@ class FiscalZones extends ApiAbstract
     /**
      * Get All
      *
+     * @param array $data
      * @return mixed
      */
-    public function getAll()
+    public function getAll(array $data)
     {
         $endpoint = $this->getEndpoint('getAll/');
-        // TODO
+        
+        $rules = [
+            'country_id' => ['required', 'numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 }

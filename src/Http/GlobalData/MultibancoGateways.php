@@ -24,7 +24,8 @@ class MultibancoGateways extends ApiAbstract
     public function getAll()
     {
         $endpoint = $this->getEndpoint('getAll/');
-        // TODO
+        
+        return $this->apiClient->postWithRetry($endpoint);
     }
 
     /**
@@ -35,6 +36,7 @@ class MultibancoGateways extends ApiAbstract
     public function getModifiedSince()
     {
         $endpoint = $this->getEndpoint('getModifiedSince/');
-        // TODO
+        
+        return $this->apiClient->postWithRetry($endpoint);
     }
 }

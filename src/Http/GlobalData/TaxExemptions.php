@@ -19,33 +19,59 @@ class TaxExemptions extends ApiAbstract
     /**
      * Get All
      *
+     * @param array $data
      * @return mixed
      */
-    public function getAll()
+    public function getAll(array $data)
     {
         $endpoint = $this->getEndpoint('getAll/');
-        // TODO
+
+        $rules = [
+            'with_invisible' => ['boolean']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint);
     }
 
     /**
      * Count Modified Since
      *
+     * @param array $data
      * @return mixed
      */
-    public function countModifiedSince()
+    public function countModifiedSince(array $data)
     {
         $endpoint = $this->getEndpoint('countModifiedSince/');
-        // TODO
+        
+        $rules = [
+            'lastmodified' => ['required', 'date'],
+            'with_invisible' => ['boolean']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint);
     }
 
     /**
      * Get Modified Since
      *
+     * @param array $data
      * @return mixed
      */
-    public function getModifiedSince()
+    public function getModifiedSince(array $data)
     {
         $endpoint = $this->getEndpoint('getModifiedSince/');
-        // TODO
+        
+        $rules = [
+            'lastmodified' => ['required', 'date'],
+            'with_invisible' => ['boolean']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint);
     }
 }
