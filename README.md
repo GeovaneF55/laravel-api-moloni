@@ -13,7 +13,7 @@ Below, you have an example of the usage of this package:
 
 ## Usage Example
 
-```bash
+```php
 <?php
 
 require_once('vendor/autoload.php');
@@ -49,3 +49,6 @@ try {
     var_dump(get_class($e) . ': ' . $e->getMessage());
 }
 ```
+
+## Moloni's API Documentation
+- [Moloni's API Documentation Link](https://www.moloni.pt/dev/)

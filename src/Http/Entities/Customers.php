@@ -19,220 +19,447 @@ class Customers extends ApiAbstract
     /**
      * Get All
      *
+     * @param array $data
      * @return mixed
      */
-    public function getAll()
+    public function getAll(array $data)
     {
         $endpoint = $this->getEndpoint('getAll/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'qty' => ['numeric'],
+            'offset' => ['numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Get One
      *
+     * @param array $data
      * @return mixed
      */
-    public function getOne()
+    public function getOne(array $data)
     {
         $endpoint = $this->getEndpoint('getOne/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'customer_id' => ['required', 'numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Get By Search
-     *
+     * @param array $data
      * @return mixed
      */
-    public function getBySearch()
+    public function getBySearch(array $data)
     {
         $endpoint = $this->getEndpoint('getBySearch/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'search' => ['required', 'string'],
+            'qty' => ['numeric'],
+            'offset' => ['numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Get By Vat
-     *
+     * @param array $data
      * @return mixed
      */
-    public function getByVat()
+    public function getByVat(array $data)
     {
         $endpoint = $this->getEndpoint('getByVat/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'vat' => ['required', 'string'],
+            'qty' => ['numeric'],
+            'offset' => ['numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Get By Number
-     *
+     * @param array $data
      * @return mixed
      */
-    public function getByNumber()
+    public function getByNumber(array $data)
     {
         $endpoint = $this->getEndpoint('getByNumber/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'number' => ['required', 'string'],
+            'qty' => ['numeric'],
+            'offset' => ['numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Get By Email
-     *
+     * @param array $data
      * @return mixed
      */
-    public function getByEmail()
+    public function getByEmail(array $data)
     {
         $endpoint = $this->getEndpoint('getByEmail/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'email' => ['required', 'string', 'email'],
+            'qty' => ['numeric'],
+            'offset' => ['numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Get By Name
-     *
+     * @param array $data
      * @return mixed
      */
-    public function getByName()
+    public function getByName(array $data)
     {
         $endpoint = $this->getEndpoint('getByName/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'name' => ['required', 'string'],
+            'qty' => ['numeric'],
+            'offset' => ['numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Get By Next Number
-     *
+     * @param array $data
      * @return mixed
      */
-    public function getNextNumber()
+    public function getNextNumber(array $data)
     {
         $endpoint = $this->getEndpoint('getNextNumber/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Get By Last Number
-     *
+     * @param array $data
      * @return mixed
      */
-    public function getLastNumber()
+    public function getLastNumber(array $data)
     {
         $endpoint = $this->getEndpoint('getLastNumber/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Get By Modified Since
-     *
+     * @param array $data
      * @return mixed
      */
-    public function getModifiedSince()
+    public function getModifiedSince(array $data)
     {
         $endpoint = $this->getEndpoint('getModifiedSince/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'lastmodified' => ['required', 'date'],
+            'qty' => ['numeric'],
+            'offset' => ['numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Count
-     *
+     * @param array $data
      * @return mixed
      */
-    public function count()
+    public function count(array $data)
     {
         $endpoint = $this->getEndpoint('count/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Count By Search
-     *
+     * @param array $data
      * @return mixed
      */
-    public function countBySearch()
+    public function countBySearch(array $data)
     {
         $endpoint = $this->getEndpoint('countBySearch/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'search' => ['required', 'string']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Count By Vat
-     *
+     * @param array $data
      * @return mixed
      */
-    public function countByVat()
+    public function countByVat(array $data)
     {
         $endpoint = $this->getEndpoint('countByVat/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'vat' => ['required', 'string']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Count By Number
-     *
+     * @param array $data
      * @return mixed
      */
-    public function countByNumber()
+    public function countByNumber(array $data)
     {
         $endpoint = $this->getEndpoint('countByNumber/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'number' => ['required', 'string']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Count By Email
-     *
+     * @param array $data
      * @return mixed
      */
-    public function countByEmail()
+    public function countByEmail(array $data)
     {
         $endpoint = $this->getEndpoint('countByEmail/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'email' => ['required', 'string', 'email']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Count By Name
-     *
+     * @param array $data
      * @return mixed
      */
-    public function countByName()
+    public function countByName(array $data)
     {
         $endpoint = $this->getEndpoint('countByName/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'name' => ['required', 'string']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Count Modified Since
-     *
+     * @param array $data
      * @return mixed
      */
-    public function countModifiedSince()
+    public function countModifiedSince(array $data)
     {
         $endpoint = $this->getEndpoint('countModifiedSince/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'lastmodified' => ['required', 'date']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Insert
-     *
+     * @param array $data
      * @return mixed
      */
-    public function insert()
+    public function insert(array $data)
     {
         $endpoint = $this->getEndpoint('insert/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'vat' => ['required', 'string'],
+            'number' => ['required', 'string', 'max:20'],
+            'name' => ['required', 'string'],
+            'language_id' => ['required', 'numeric'],
+            'address' => ['required', 'string'],
+            'zip_code' => ['required', 'string'],
+            'city' => ['required', 'string'],
+            'country_id' => ['required', 'numeric'],
+            'email' => ['string', 'email'],
+            'website' => ['string', 'url'],
+            'phone' => ['string'],
+            'fax' => ['string'],
+            'contact_name' => ['string'],
+            'contact_email' => ['string', 'email'],
+            'contact_phone' => ['string'],
+            'notes' => ['string'],
+            'salesman_id' => ['numeric'],
+            'price_class_id' => ['numeric'],
+            'maturity_date_id' => ['required', 'numeric'],
+            'payment_day' => ['numeric'],
+            'discount' => ['float'],
+            'credit_limit' => ['float'],
+            'copies' => ['array'],
+            'copies.document_type_id' => ['required', 'numeric'],
+            'copies.copies' => ['required', 'numeric'],
+            'payment_method_id' => ['required', 'numeric'],
+            'delivery_method_id' => ['numeric'],
+            'field_notes' => ['string']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * update
-     *
+     * @param array $data
      * @return mixed
      */
-    public function update()
+    public function update(array $data)
     {
         $endpoint = $this->getEndpoint('update/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'customer_id' => ['required', 'numeric'],
+            'vat' => ['required', 'string'],
+            'number' => ['required', 'string', 'max:20'],
+            'name' => ['required', 'string'],
+            'language_id' => ['required', 'numeric'],
+            'address' => ['required', 'string'],
+            'zip_code' => ['required', 'string'],
+            'city' => ['required', 'string'],
+            'country_id' => ['required', 'numeric'],
+            'email' => ['string', 'email'],
+            'website' => ['string', 'url'],
+            'phone' => ['string'],
+            'fax' => ['string'],
+            'contact_name' => ['string'],
+            'contact_email' => ['string', 'email'],
+            'contact_phone' => ['string'],
+            'notes' => ['string'],
+            'salesman_id' => ['numeric'],
+            'price_class_id' => ['numeric'],
+            'maturity_date_id' => ['required', 'numeric'],
+            'payment_day' => ['numeric'],
+            'discount' => ['float'],
+            'credit_limit' => ['float'],
+            'copies' => ['array'],
+            'copies.document_type_id' => ['required', 'numeric'],
+            'copies.copies' => ['required', 'numeric'],
+            'payment_method_id' => ['required', 'numeric'],
+            'delivery_method_id' => ['numeric'],
+            'field_notes' => ['string']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Delete
-     *
+     * @param array $data
      * @return mixed
      */
-    public function delete()
+    public function delete(array $data)
     {
         $endpoint = $this->getEndpoint('delete/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'customer_id' => ['required', 'numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 }
