@@ -28,7 +28,7 @@ class MeasurementUnits extends ApiAbstract
         $endpoint = $this->getEndpoint('getAll/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -48,7 +48,9 @@ class MeasurementUnits extends ApiAbstract
         $endpoint = $this->getEndpoint('insert/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'name' => ['required', 'string'],
+            'short_name' => ['required', 'string']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -68,7 +70,10 @@ class MeasurementUnits extends ApiAbstract
         $endpoint = $this->getEndpoint('update/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'unit_id' => ['required', 'numeric'],
+            'name' => ['required', 'string'],
+            'short_name' => ['required', 'string']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -88,7 +93,8 @@ class MeasurementUnits extends ApiAbstract
         $endpoint = $this->getEndpoint('delete/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'unit_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
