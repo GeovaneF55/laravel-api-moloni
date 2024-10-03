@@ -28,7 +28,7 @@ class Warehouses extends ApiAbstract
         $endpoint = $this->getEndpoint('getAll/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -48,7 +48,18 @@ class Warehouses extends ApiAbstract
         $endpoint = $this->getEndpoint('insert/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'title' => ['required', 'string'],
+            'is_default' => ['boolean'],
+            'code' => ['required', 'string'],
+            'address' => ['required', 'string'],
+            'city' => ['required', 'string'],
+            'zip_code' => ['required', 'string'],
+            'country_id' => ['required', 'numeric'],
+            'phone' => ['string'],
+            'fax' => ['string'],
+            'contact_name' => ['string'],
+            'contact_email' => ['string', 'email']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -68,7 +79,19 @@ class Warehouses extends ApiAbstract
         $endpoint = $this->getEndpoint('update/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'warehouse_id' => ['required', 'numeric'],
+            'title' => ['required', 'string'],
+            'is_default' => ['boolean'],
+            'code' => ['required', 'string'],
+            'address' => ['required', 'string'],
+            'city' => ['required', 'string'],
+            'zip_code' => ['required', 'string'],
+            'country_id' => ['required', 'numeric'],
+            'phone' => ['string'],
+            'fax' => ['string'],
+            'contact_name' => ['string'],
+            'contact_email' => ['string', 'email']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -88,7 +111,8 @@ class Warehouses extends ApiAbstract
         $endpoint = $this->getEndpoint('delete/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'warehouse_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -108,7 +132,8 @@ class Warehouses extends ApiAbstract
         $endpoint = $this->getEndpoint('countModifiedSince/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'lastmodified' => ['required', 'date']
         ];
 
         $this->apiClient->validate($rules, $data);
