@@ -21,53 +21,116 @@ class ProductStocks extends ApiAbstract
      *
      * @return mixed
      */
-    public function getAll()
+    public function getAll(array $data)
     {
         $endpoint = $this->getEndpoint('getAll/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'product_id' => ['numeric'],
+            'movement_date' => ['date'],
+            'warehouse_id' => ['numeric'],
+            'qty' => ['numeric'],
+            'offset' => ['numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint);
     }
 
     /**
      * Insert
      *
+     * @param array $data
      * @return mixed
      */
-    public function insert()
+    public function insert(array $data)
     {
         $endpoint = $this->getEndpoint('insert/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'product_id' => ['required', 'numeric'],
+            'movement_date' => ['required', 'date'],
+            'qty' => ['required', 'numeric'],
+            'warehouse_id' => ['numeric'],
+            'notes' => ['string']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint);
     }
 
     /**
      * Update
      *
+     * @param array $data
      * @return mixed
      */
-    public function update()
+    public function update(array $data)
     {
         $endpoint = $this->getEndpoint('update/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'product_stock_id' => ['required', 'numeric'],
+            'product_id' => ['required', 'numeric'],
+            'movement_date' => ['required', 'date'],
+            'qty' => ['required', 'numeric'],
+            'warehouse_id' => ['numeric'],
+            'notes' => ['string']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint);
     }
 
     /**
      * Delete
      *
+     * @param array $data
      * @return mixed
      */
-    public function delete()
+    public function delete(array $data)
     {
         $endpoint = $this->getEndpoint('delete/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'product_stock_id' => ['required', 'numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint);
     }
 
     /**
      * Move To Warehouse
      *
+     * @param array $data
      * @return mixed
      */
-    public function moveToWarehouse()
+    public function moveToWarehouse(array $data)
     {
         $endpoint = $this->getEndpoint('moveToWarehouse/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'product_stock_id' => ['required', 'numeric'],
+            'product_id' => ['required', 'numeric'],
+            'movement_date' => ['required', 'date'],
+            'qty' => ['required', 'numeric'],
+            'from_warehouse_id' => ['required', 'numeric'],
+            'to_warehouse_id' => ['required', 'numeric'],
+            'notes' => ['string']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint);
     }
 }

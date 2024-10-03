@@ -17,57 +17,108 @@ class ProductCategories extends ApiAbstract
     }
 
     /**
-     * Get All
-     *
-     * @return mixed
-     */
-    public function getAll()
-    {
-        $endpoint = $this->getEndpoint('getAll/');
-        // TODO
-    }
-
-    /**
      * Get One
      *
      * @return mixed
      */
-    public function getOne()
+    public function getOne(array $data)
     {
         $endpoint = $this->getEndpoint('getOne/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'category_id' => ['required', 'numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint);
+    }
+
+    /**
+     * Get All
+     *
+     * @param array $data
+     * @return mixed
+     */
+    public function getAll(array $data)
+    {
+        $endpoint = $this->getEndpoint('getAll/');
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'parent_id' => ['required', 'numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint);
     }
 
     /**
      * Insert
      *
+     * @param array $data
      * @return mixed
      */
-    public function insert()
+    public function insert(array $data)
     {
         $endpoint = $this->getEndpoint('insert/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'parent_id' => ['required', 'numeric'],
+            'name' => ['required', 'string'],
+            'description' => ['string'],
+            'pos_enabled' => ['numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint);
     }
 
     /**
      * Update
      *
+     * @param array $data
      * @return mixed
      */
-    public function update()
+    public function update(array $data)
     {
         $endpoint = $this->getEndpoint('update/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'category_id' => ['required', 'numeric'],
+            'parent_id' => ['required', 'numeric'],
+            'name' => ['required', 'string'],
+            'description' => ['string'],
+            'pos_enabled' => ['numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint);
     }
 
     /**
      * Delete
      *
+     * @param array $data
      * @return mixed
      */
-    public function delete()
+    public function delete(array $data)
     {
         $endpoint = $this->getEndpoint('delete/');
-        // TODO
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'category_id' => ['required', 'numeric']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint);
     }
 }
