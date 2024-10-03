@@ -28,7 +28,7 @@ class Deductions extends ApiAbstract
         $endpoint = $this->getEndpoint('getAll/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -48,7 +48,9 @@ class Deductions extends ApiAbstract
         $endpoint = $this->getEndpoint('insert/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'name' => ['required', 'string'],
+            'value' => ['required', 'float']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -68,7 +70,10 @@ class Deductions extends ApiAbstract
         $endpoint = $this->getEndpoint('update/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'deduction_id' => ['required', 'numeric'],
+            'name' => ['required', 'string'],
+            'value' => ['required', 'float']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -88,7 +93,8 @@ class Deductions extends ApiAbstract
         $endpoint = $this->getEndpoint('delete/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'deduction_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
