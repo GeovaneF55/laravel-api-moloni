@@ -28,7 +28,7 @@ class IdentificationTemplates extends ApiAbstract
         $endpoint = $this->getEndpoint('getAll/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -48,7 +48,21 @@ class IdentificationTemplates extends ApiAbstract
         $endpoint = $this->getEndpoint('insert/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'name' => ['required', 'string'],
+            'business_name' => ['required', 'string'],
+            'email' => ['required', 'string', 'email'],
+            'address' => ['required', 'string'],
+            'city' => ['required', 'string'],
+            'zip_code' => ['required', 'string'],
+            'country_id' => ['required', 'numeric'],
+            'phone' => ['string'],
+            'fax' => ['string'],
+            'website' => ['string'],
+            'notes' => ['string'],
+            'documents_footnote' => ['string'],
+            'email_sender_name' => ['required', 'string'],
+            'email_sender_address' => ['required', 'string']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -68,7 +82,22 @@ class IdentificationTemplates extends ApiAbstract
         $endpoint = $this->getEndpoint('update/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'template_id' => ['required', 'numeric'],
+            'name' => ['required', 'string'],
+            'business_name' => ['required', 'string'],
+            'email' => ['required', 'string', 'email'],
+            'address' => ['required', 'string'],
+            'city' => ['required', 'string'],
+            'zip_code' => ['required', 'string'],
+            'country_id' => ['required', 'numeric'],
+            'phone' => ['string'],
+            'fax' => ['string'],
+            'website' => ['string'],
+            'notes' => ['string'],
+            'documents_footnote' => ['string'],
+            'email_sender_name' => ['required', 'string'],
+            'email_sender_address' => ['required', 'string']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -88,7 +117,8 @@ class IdentificationTemplates extends ApiAbstract
         $endpoint = $this->getEndpoint('delete/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'template_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
