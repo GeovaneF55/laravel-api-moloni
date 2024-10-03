@@ -28,7 +28,7 @@ class DocumentSets extends ApiAbstract
         $endpoint = $this->getEndpoint('getAll/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -48,7 +48,11 @@ class DocumentSets extends ApiAbstract
         $endpoint = $this->getEndpoint('insert/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'name' => ['required', 'string'],
+            'cash_vat_scheme_indicator' => ['numeric'],
+            'active_by_default' => ['boolean'],
+            'template_id' => ['numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -68,7 +72,12 @@ class DocumentSets extends ApiAbstract
         $endpoint = $this->getEndpoint('update/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'document_set_id' => ['required', 'numeric'],
+            'name' => ['required', 'string'],
+            'cash_vat_scheme_indicator' => ['numeric'],
+            'active_by_default' => ['boolean'],
+            'template_id' => ['numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -88,7 +97,8 @@ class DocumentSets extends ApiAbstract
         $endpoint = $this->getEndpoint('delete/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'document_set_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -108,7 +118,8 @@ class DocumentSets extends ApiAbstract
         $endpoint = $this->getEndpoint('countModifiedSince/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'lastmodified' => ['required', 'date']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -128,7 +139,8 @@ class DocumentSets extends ApiAbstract
         $endpoint = $this->getEndpoint('getModifiedSince/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'lastmodified' => ['required', 'date']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -148,7 +160,12 @@ class DocumentSets extends ApiAbstract
         $endpoint = $this->getEndpoint('aTInsertCode/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'document_set_id' => ['required', 'numeric'],
+            'document_type_id' => ['required', 'numeric'],
+            'document_set_at_code' => ['numeric'],
+            'initial_num' => ['numeric'],
+            'initial_date' => ['date']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -168,7 +185,9 @@ class DocumentSets extends ApiAbstract
         $endpoint = $this->getEndpoint('aTInsertCodeBulk/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'document_set_id' => ['required', 'array'],
+            'document_set_id.*' => ['required', 'int']
         ];
 
         $this->apiClient->validate($rules, $data);
