@@ -21,8 +21,9 @@ class CreditNotes extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function count(array $data)
+    public function count(array $data = [])
     {
         $endpoint = $this->getEndpoint('count/');
         
@@ -50,8 +51,9 @@ class CreditNotes extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getAll(array $data)
+    public function getAll(array $data = [])
     {
         $endpoint = $this->getEndpoint('getAll/');
         
@@ -81,8 +83,9 @@ class CreditNotes extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getOne(array $data)
+    public function getOne(array $data = [])
     {
         $endpoint = $this->getEndpoint('getOne/');
         
@@ -111,8 +114,9 @@ class CreditNotes extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function insert(array $data)
+    public function insert(array $data = [])
     {
         $endpoint = $this->getEndpoint('insert/');
         
@@ -190,8 +194,9 @@ class CreditNotes extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function update(array $data)
+    public function update(array $data = [])
     {
         $endpoint = $this->getEndpoint('update/');
         
@@ -270,8 +275,9 @@ class CreditNotes extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function delete(array $data)
+    public function delete(array $data = [])
     {
         $endpoint = $this->getEndpoint('delete/');
         

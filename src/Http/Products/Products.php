@@ -21,8 +21,9 @@ class Products extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function count(array $data)
+    public function count(array $data = [])
     {
         $endpoint = $this->getEndpoint('count/');
         
@@ -33,7 +34,7 @@ class Products extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -41,8 +42,9 @@ class Products extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getAll(array $data)
+    public function getAll(array $data = [])
     {
         $endpoint = $this->getEndpoint('getAll/');
         
@@ -56,7 +58,7 @@ class Products extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -64,8 +66,9 @@ class Products extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getOne(array $data)
+    public function getOne(array $data = [])
     {
         $endpoint = $this->getEndpoint('getOne/');
         
@@ -77,7 +80,7 @@ class Products extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -85,8 +88,9 @@ class Products extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function countBySearch(array $data)
+    public function countBySearch(array $data = [])
     {
         $endpoint = $this->getEndpoint('countBySearch/');
         
@@ -97,7 +101,7 @@ class Products extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -105,8 +109,9 @@ class Products extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getBySearch(array $data)
+    public function getBySearch(array $data = [])
     {
         $endpoint = $this->getEndpoint('getBySearch/');
         
@@ -119,7 +124,7 @@ class Products extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -127,8 +132,9 @@ class Products extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function countByName(array $data)
+    public function countByName(array $data = [])
     {
         $endpoint = $this->getEndpoint('countByName/');
         
@@ -139,7 +145,7 @@ class Products extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -147,8 +153,9 @@ class Products extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getByName(array $data)
+    public function getByName(array $data = [])
     {
         $endpoint = $this->getEndpoint('getByName/');
         
@@ -161,7 +168,7 @@ class Products extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -169,8 +176,9 @@ class Products extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function countByReference(array $data)
+    public function countByReference(array $data = [])
     {
         $endpoint = $this->getEndpoint('countByReference/');
         
@@ -181,7 +189,7 @@ class Products extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -189,8 +197,9 @@ class Products extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getByReference(array $data)
+    public function getByReference(array $data = [])
     {
         $endpoint = $this->getEndpoint('getByReference/');
         
@@ -203,7 +212,7 @@ class Products extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -211,8 +220,9 @@ class Products extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function countByEAN(array $data)
+    public function countByEAN(array $data = [])
     {
         $endpoint = $this->getEndpoint('countByEAN/');
         
@@ -223,7 +233,7 @@ class Products extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -231,8 +241,9 @@ class Products extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getByEAN(array $data)
+    public function getByEAN(array $data = [])
     {
         $endpoint = $this->getEndpoint('getByEAN/');
         
@@ -245,7 +256,7 @@ class Products extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -253,8 +264,9 @@ class Products extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function countModifiedSince(array $data)
+    public function countModifiedSince(array $data = [])
     {
         $endpoint = $this->getEndpoint('countModifiedSince/');
         
@@ -265,7 +277,7 @@ class Products extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -273,8 +285,9 @@ class Products extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getModifiedSince(array $data)
+    public function getModifiedSince(array $data = [])
     {
         $endpoint = $this->getEndpoint('getModifiedSince/');
         
@@ -287,7 +300,7 @@ class Products extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -295,8 +308,9 @@ class Products extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getLastCostPrice(array $data)
+    public function getLastCostPrice(array $data = [])
     {
         $endpoint = $this->getEndpoint('getLastCostPrice/');
         
@@ -308,7 +322,7 @@ class Products extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -316,8 +330,9 @@ class Products extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function insert(array $data)
+    public function insert(array $data = [])
     {
         $endpoint = $this->getEndpoint('insert/');
         
@@ -356,7 +371,7 @@ class Products extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -364,8 +379,9 @@ class Products extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function update(array $data)
+    public function update(array $data = [])
     {
         $endpoint = $this->getEndpoint('update/');
         
@@ -405,7 +421,7 @@ class Products extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -413,8 +429,9 @@ class Products extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function delete(array $data)
+    public function delete(array $data = [])
     {
         $endpoint = $this->getEndpoint('delete/');
         
@@ -425,7 +442,7 @@ class Products extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -433,8 +450,9 @@ class Products extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getNextReference(array $data)
+    public function getNextReference(array $data = [])
     {
         $endpoint = $this->getEndpoint('getNextReference/');
         
@@ -444,6 +462,6 @@ class Products extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 }

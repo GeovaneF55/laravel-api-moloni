@@ -21,8 +21,9 @@ class PriceClasses extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getAll(array $data)
+    public function getAll(array $data = [])
     {
         $endpoint = $this->getEndpoint('getAll/');
         
@@ -32,7 +33,7 @@ class PriceClasses extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -40,8 +41,9 @@ class PriceClasses extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function insert(array $data)
+    public function insert(array $data = [])
     {
         $endpoint = $this->getEndpoint('insert/');
         
@@ -52,7 +54,7 @@ class PriceClasses extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -60,8 +62,9 @@ class PriceClasses extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function update(array $data)
+    public function update(array $data = [])
     {
         $endpoint = $this->getEndpoint('update/');
         
@@ -73,7 +76,7 @@ class PriceClasses extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -81,8 +84,9 @@ class PriceClasses extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function delete(array $data)
+    public function delete(array $data = [])
     {
         $endpoint = $this->getEndpoint('delete/');
         
@@ -93,6 +97,6 @@ class PriceClasses extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 }

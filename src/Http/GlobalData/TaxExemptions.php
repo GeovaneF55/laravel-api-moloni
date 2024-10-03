@@ -21,8 +21,9 @@ class TaxExemptions extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getAll(array $data)
+    public function getAll(array $data = [])
     {
         $endpoint = $this->getEndpoint('getAll/');
 
@@ -32,7 +33,7 @@ class TaxExemptions extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -40,8 +41,9 @@ class TaxExemptions extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function countModifiedSince(array $data)
+    public function countModifiedSince(array $data = [])
     {
         $endpoint = $this->getEndpoint('countModifiedSince/');
         
@@ -52,7 +54,7 @@ class TaxExemptions extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -60,8 +62,9 @@ class TaxExemptions extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getModifiedSince(array $data)
+    public function getModifiedSince(array $data = [])
     {
         $endpoint = $this->getEndpoint('getModifiedSince/');
         
@@ -72,6 +75,6 @@ class TaxExemptions extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 }

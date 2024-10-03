@@ -19,132 +19,240 @@ class Documents extends ApiAbstract
     /**
      * Get All Document Types
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getAllDocumentTypes()
+    public function getAllDocumentTypes(array $data = [])
     {
         $endpoint = $this->getEndpoint('getAllDocumentTypes/');
-        // TODO
+        
+        $rules = [
+            // TODO
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Get By MB Reference
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getByMBReference()
+    public function getByMBReference(array $data = [])
     {
         $endpoint = $this->getEndpoint('getByMBReference/');
-        // TODO
+        
+        $rules = [
+            // TODO
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Set MB Reference As Paid
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function setMBReferenceAsPaid()
+    public function setMBReferenceAsPaid(array $data = [])
     {
         $endpoint = $this->getEndpoint('setMBReferenceAsPaid/');
-        // TODO
+        
+        $rules = [
+            // TODO
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Count
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function count()
+    public function count(array $data = [])
     {
         $endpoint = $this->getEndpoint('count/');
-        // TODO
+        
+        $rules = [
+            // TODO
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Get All
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getAll()
+    public function getAll(array $data = [])
     {
         $endpoint = $this->getEndpoint('getAll/');
-        // TODO
+        
+        $rules = [
+            // TODO
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Get One
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getOne()
+    public function getOne(array $data = [])
     {
         $endpoint = $this->getEndpoint('getOne/');
-        // TODO
+        
+        $rules = [
+            // TODO
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Get PDF Link
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getPDFLink()
+    public function getPDFLink(array $data = [])
     {
         $endpoint = $this->getEndpoint('getPDFLink/');
-        // TODO
+        
+        $rules = [
+            // TODO
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Count Modified Since
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function countModifiedSince()
+    public function countModifiedSince(array $data = [])
     {
         $endpoint = $this->getEndpoint('countModifiedSince/');
-        // TODO
+        
+        $rules = [
+            // TODO
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Get Modified Since
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getModifiedSince()
+    public function getModifiedSince(array $data = [])
     {
         $endpoint = $this->getEndpoint('getModifiedSince/');
-        // TODO
+        
+        $rules = [
+            // TODO
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Delete MB Reference
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function deleteMBReference()
+    public function deleteMBReference(array $data = [])
     {
         $endpoint = $this->getEndpoint('deleteMBReference/');
-        // TODO
+        
+        $rules = [
+            // TODO
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Document Cancel
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function documentCancel()
+    public function documentCancel(array $data = [])
     {
         $endpoint = $this->getEndpoint('documentCancel/');
-        // TODO
+        
+        $rules = [
+            // TODO
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Document Draft
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function documentDraft()
+    public function documentDraft(array $data = [])
     {
         $endpoint = $this->getEndpoint('documentDraft/');
-        // TODO
+        
+        $rules = [
+            // TODO
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 }

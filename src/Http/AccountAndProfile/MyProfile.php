@@ -21,8 +21,9 @@ class MyProfile extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function signUp(array $data)
+    public function signUp(array $data = [])
     {
         $endpoint = $this->getEndpoint('signUp/');
 
@@ -47,8 +48,9 @@ class MyProfile extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function recoverPassword(array $data)
+    public function recoverPassword(array $data = [])
     {
         $endpoint = $this->getEndpoint('recoverPassword/');
 
@@ -67,8 +69,9 @@ class MyProfile extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function updateMe(array $data)
+    public function updateMe(array $data = [])
     {
         $endpoint = $this->getEndpoint('updateMe/');
         
@@ -91,10 +94,14 @@ class MyProfile extends ApiAbstract
      * @return mixed
      * @throws ValidationException|Exception
      */
-    public function getMe()
+    public function getMe(array $data = [])
     {
         $endpoint = $this->getEndpoint('getMe/');
 
-        return $this->apiClient->postWithRetry($endpoint);
+        $rules = [];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 }

@@ -21,8 +21,9 @@ class FiscalZones extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getAll(array $data)
+    public function getAll(array $data = [])
     {
         $endpoint = $this->getEndpoint('getAll/');
         

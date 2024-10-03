@@ -20,6 +20,7 @@ class Waybills extends ApiAbstract
      * Count
      *
      * @return mixed
+     * @throws ValidationException|Exception
      */
     public function count()
     {
@@ -31,6 +32,7 @@ class Waybills extends ApiAbstract
      * Get All
      *
      * @return mixed
+     * @throws ValidationException|Exception
      */
     public function getAll()
     {
@@ -42,6 +44,7 @@ class Waybills extends ApiAbstract
      * Get One
      *
      * @return mixed
+     * @throws ValidationException|Exception
      */
     public function getOne()
     {
@@ -53,6 +56,7 @@ class Waybills extends ApiAbstract
      * Insert
      *
      * @return mixed
+     * @throws ValidationException|Exception
      */
     public function insert()
     {
@@ -64,6 +68,7 @@ class Waybills extends ApiAbstract
      * Update
      *
      * @return mixed
+     * @throws ValidationException|Exception
      */
     public function update()
     {
@@ -75,6 +80,7 @@ class Waybills extends ApiAbstract
      * Delete
      *
      * @return mixed
+     * @throws ValidationException|Exception
      */
     public function delete()
     {
@@ -86,6 +92,7 @@ class Waybills extends ApiAbstract
      * Set Transport Code
      *
      * @return mixed
+     * @throws ValidationException|Exception
      */
     public function setTransportCode()
     {

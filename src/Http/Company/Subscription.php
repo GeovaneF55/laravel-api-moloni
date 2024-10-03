@@ -21,8 +21,9 @@ class Subscription extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getOne(array $data)
+    public function getOne(array $data = [])
     {
         $endpoint = $this->getEndpoint('getOne/');
         

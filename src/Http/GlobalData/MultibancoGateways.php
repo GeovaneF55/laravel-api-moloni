@@ -18,25 +18,36 @@ class MultibancoGateways extends ApiAbstract
 
     /**
      * Get All
-     *
+     *@param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getAll()
+    public function getAll(array $data = [])
     {
         $endpoint = $this->getEndpoint('getAll/');
+
+        $rules = [];
+
+        $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Get Modified Since
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getModifiedSince()
+    public function getModifiedSince(array $data = [])
     {
         $endpoint = $this->getEndpoint('getModifiedSince/');
+
+        $rules = [];
+
+        $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 }

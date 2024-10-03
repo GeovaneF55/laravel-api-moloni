@@ -19,13 +19,19 @@ class CurrencyExchange extends ApiAbstract
     /**
      * Get All
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getAll()
+    public function getAll(array $data = [])
     {
         $endpoint = $this->getEndpoint('getAll/');
+
+        $rules = [];
+
+        $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -33,8 +39,9 @@ class CurrencyExchange extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getModifiedSince(array $data)
+    public function getModifiedSince(array $data = [])
     {
         $endpoint = $this->getEndpoint('getModifiedSince/');
 

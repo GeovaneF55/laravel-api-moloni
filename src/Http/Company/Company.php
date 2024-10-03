@@ -10,6 +10,7 @@ class Company extends ApiAbstract
      *
      * @param string $endpoint
      * @return string
+     * @throws ValidationException|Exception
      */
     public function getEndpoint(string $endpoint = ''): string
     {
@@ -21,8 +22,9 @@ class Company extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function freeSlug(array $data)
+    public function freeSlug(array $data = [])
     {
         $endpoint = $this->getEndpoint('freeSlug/');
         
@@ -38,13 +40,19 @@ class Company extends ApiAbstract
     /**
      * Get All
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getAll()
+    public function getAll(array $data = [])
     {
         $endpoint = $this->getEndpoint('getAll/');
 
-        return $this->apiClient->postWithRetry($endpoint);
+        $rules = [];
+
+        $this->apiClient->validate($rules, $data);
+
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -52,8 +60,9 @@ class Company extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getOne(array $data)
+    public function getOne(array $data = [])
     {
         $endpoint = $this->getEndpoint('getOne/');
 

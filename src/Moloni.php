@@ -46,7 +46,7 @@ use Geovanefss\LaravelApiMoloni\Http\Products\PriceClasses;
 use Geovanefss\LaravelApiMoloni\Http\Products\ProductCategories;
 use Geovanefss\LaravelApiMoloni\Http\Products\Products;
 use Geovanefss\LaravelApiMoloni\Http\Products\ProductStocks;
-use Geovanefss\LaravelApiMoloni\Http\Settings\BankAccount;
+use Geovanefss\LaravelApiMoloni\Http\Settings\BankAccounts;
 use Geovanefss\LaravelApiMoloni\Http\Settings\Deductions;
 use Geovanefss\LaravelApiMoloni\Http\Settings\DocumentSets;
 use Geovanefss\LaravelApiMoloni\Http\Settings\EconomicActivityClassificationCodes;
@@ -531,11 +531,11 @@ class Moloni
     /**
      * Bank Account API
      *
-     * @return BankAccount
+     * @return BankAccounts
      */
-    public function bankAccount(): BankAccount
+    public function bankAccount(): BankAccounts
     {
-        return new BankAccount($this->apiClient);
+        return new BankAccounts($this->apiClient);
     }
 
     /**

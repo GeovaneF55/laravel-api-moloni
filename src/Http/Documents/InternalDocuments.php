@@ -19,66 +19,120 @@ class InternalDocuments extends ApiAbstract
     /**
      * Count
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function count()
+    public function count(array $data = [])
     {
         $endpoint = $this->getEndpoint('count/');
-        // TODO
+        
+        $rules = [
+            // TODO
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Get All
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getAll()
+    public function getAll(array $data = [])
     {
         $endpoint = $this->getEndpoint('getAll/');
-        // TODO
+        
+        $rules = [
+            // TODO
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Get One
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getOne()
+    public function getOne(array $data = [])
     {
         $endpoint = $this->getEndpoint('getOne/');
-        // TODO
+        
+        $rules = [
+            // TODO
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Insert
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function insert()
+    public function insert(array $data = [])
     {
         $endpoint = $this->getEndpoint('insert/');
-        // TODO
+        
+        $rules = [
+            // TODO
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Update
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function update()
+    public function update(array $data = [])
     {
         $endpoint = $this->getEndpoint('update/');
-        // TODO
+        
+        $rules = [
+            // TODO
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
      * Delete
      *
+     * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function delete()
+    public function delete(array $data = [])
     {
         $endpoint = $this->getEndpoint('delete/');
-        // TODO
+        
+        $rules = [
+            // TODO
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 }

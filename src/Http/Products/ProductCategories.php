@@ -20,8 +20,9 @@ class ProductCategories extends ApiAbstract
      * Get One
      *
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getOne(array $data)
+    public function getOne(array $data = [])
     {
         $endpoint = $this->getEndpoint('getOne/');
         
@@ -32,7 +33,7 @@ class ProductCategories extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -40,8 +41,9 @@ class ProductCategories extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getAll(array $data)
+    public function getAll(array $data = [])
     {
         $endpoint = $this->getEndpoint('getAll/');
         
@@ -52,7 +54,7 @@ class ProductCategories extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -60,8 +62,9 @@ class ProductCategories extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function insert(array $data)
+    public function insert(array $data = [])
     {
         $endpoint = $this->getEndpoint('insert/');
         
@@ -75,7 +78,7 @@ class ProductCategories extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -83,8 +86,9 @@ class ProductCategories extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function update(array $data)
+    public function update(array $data = [])
     {
         $endpoint = $this->getEndpoint('update/');
         
@@ -99,7 +103,7 @@ class ProductCategories extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
     /**
@@ -107,8 +111,9 @@ class ProductCategories extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function delete(array $data)
+    public function delete(array $data = [])
     {
         $endpoint = $this->getEndpoint('delete/');
         
@@ -119,6 +124,6 @@ class ProductCategories extends ApiAbstract
 
         $this->apiClient->validate($rules, $data);
         
-        return $this->apiClient->postWithRetry($endpoint);
+        return $this->apiClient->postWithRetry($endpoint, $data);
     }
 }

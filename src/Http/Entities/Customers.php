@@ -21,8 +21,9 @@ class Customers extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getAll(array $data)
+    public function getAll(array $data = [])
     {
         $endpoint = $this->getEndpoint('getAll/');
         
@@ -42,8 +43,9 @@ class Customers extends ApiAbstract
      *
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getOne(array $data)
+    public function getOne(array $data = [])
     {
         $endpoint = $this->getEndpoint('getOne/');
         
@@ -61,8 +63,9 @@ class Customers extends ApiAbstract
      * Get By Search
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getBySearch(array $data)
+    public function getBySearch(array $data = [])
     {
         $endpoint = $this->getEndpoint('getBySearch/');
         
@@ -82,8 +85,9 @@ class Customers extends ApiAbstract
      * Get By Vat
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getByVat(array $data)
+    public function getByVat(array $data = [])
     {
         $endpoint = $this->getEndpoint('getByVat/');
         
@@ -103,8 +107,9 @@ class Customers extends ApiAbstract
      * Get By Number
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getByNumber(array $data)
+    public function getByNumber(array $data = [])
     {
         $endpoint = $this->getEndpoint('getByNumber/');
         
@@ -124,8 +129,9 @@ class Customers extends ApiAbstract
      * Get By Email
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getByEmail(array $data)
+    public function getByEmail(array $data = [])
     {
         $endpoint = $this->getEndpoint('getByEmail/');
         
@@ -145,8 +151,9 @@ class Customers extends ApiAbstract
      * Get By Name
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getByName(array $data)
+    public function getByName(array $data = [])
     {
         $endpoint = $this->getEndpoint('getByName/');
         
@@ -166,8 +173,9 @@ class Customers extends ApiAbstract
      * Get By Next Number
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getNextNumber(array $data)
+    public function getNextNumber(array $data = [])
     {
         $endpoint = $this->getEndpoint('getNextNumber/');
         
@@ -184,8 +192,9 @@ class Customers extends ApiAbstract
      * Get By Last Number
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getLastNumber(array $data)
+    public function getLastNumber(array $data = [])
     {
         $endpoint = $this->getEndpoint('getLastNumber/');
         
@@ -202,8 +211,9 @@ class Customers extends ApiAbstract
      * Get By Modified Since
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function getModifiedSince(array $data)
+    public function getModifiedSince(array $data = [])
     {
         $endpoint = $this->getEndpoint('getModifiedSince/');
         
@@ -223,8 +233,9 @@ class Customers extends ApiAbstract
      * Count
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function count(array $data)
+    public function count(array $data = [])
     {
         $endpoint = $this->getEndpoint('count/');
         
@@ -241,8 +252,9 @@ class Customers extends ApiAbstract
      * Count By Search
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function countBySearch(array $data)
+    public function countBySearch(array $data = [])
     {
         $endpoint = $this->getEndpoint('countBySearch/');
         
@@ -260,8 +272,9 @@ class Customers extends ApiAbstract
      * Count By Vat
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function countByVat(array $data)
+    public function countByVat(array $data = [])
     {
         $endpoint = $this->getEndpoint('countByVat/');
         
@@ -279,8 +292,9 @@ class Customers extends ApiAbstract
      * Count By Number
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function countByNumber(array $data)
+    public function countByNumber(array $data = [])
     {
         $endpoint = $this->getEndpoint('countByNumber/');
         
@@ -298,8 +312,9 @@ class Customers extends ApiAbstract
      * Count By Email
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function countByEmail(array $data)
+    public function countByEmail(array $data = [])
     {
         $endpoint = $this->getEndpoint('countByEmail/');
         
@@ -317,8 +332,9 @@ class Customers extends ApiAbstract
      * Count By Name
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function countByName(array $data)
+    public function countByName(array $data = [])
     {
         $endpoint = $this->getEndpoint('countByName/');
         
@@ -336,8 +352,9 @@ class Customers extends ApiAbstract
      * Count Modified Since
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function countModifiedSince(array $data)
+    public function countModifiedSince(array $data = [])
     {
         $endpoint = $this->getEndpoint('countModifiedSince/');
         
@@ -355,8 +372,9 @@ class Customers extends ApiAbstract
      * Insert
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function insert(array $data)
+    public function insert(array $data = [])
     {
         $endpoint = $this->getEndpoint('insert/');
         
@@ -401,8 +419,9 @@ class Customers extends ApiAbstract
      * update
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function update(array $data)
+    public function update(array $data = [])
     {
         $endpoint = $this->getEndpoint('update/');
         
@@ -448,8 +467,9 @@ class Customers extends ApiAbstract
      * Delete
      * @param array $data
      * @return mixed
+     * @throws ValidationException|Exception
      */
-    public function delete(array $data)
+    public function delete(array $data = [])
     {
         $endpoint = $this->getEndpoint('delete/');
         

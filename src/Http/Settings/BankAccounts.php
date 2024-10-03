@@ -1,9 +1,9 @@
 <?php
-namespace Geovanefss\LaravelApiMoloni\Http\Documents;
+namespace Geovanefss\LaravelApiMoloni\Http\Settings;
 
 use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
 
-class InvoiceReceipts extends ApiAbstract
+class BankAccounts extends ApiAbstract
 {
     /**
      * Get Endpoint
@@ -13,27 +13,7 @@ class InvoiceReceipts extends ApiAbstract
      */
     public function getEndpoint(string $endpoint = ''): string
     {
-        return 'invoiceReceipts/' . $endpoint;
-    }
-    
-    /**
-     * Count
-     *
-     * @param array $data
-     * @return mixed
-     * @throws ValidationException|Exception
-     */
-    public function count(array $data = [])
-    {
-        $endpoint = $this->getEndpoint('count/');
-        
-        $rules = [
-            // TODO
-        ];
-
-        $this->apiClient->validate($rules, $data);
-        
-        return $this->apiClient->postWithRetry($endpoint, $data);
+        return 'bankAccounts/' . $endpoint;
     }
 
     /**
@@ -48,27 +28,7 @@ class InvoiceReceipts extends ApiAbstract
         $endpoint = $this->getEndpoint('getAll/');
         
         $rules = [
-            // TODO
-        ];
-
-        $this->apiClient->validate($rules, $data);
-        
-        return $this->apiClient->postWithRetry($endpoint, $data);
-    }
-
-    /**
-     * Get One
-     *
-     * @param array $data
-     * @return mixed
-     * @throws ValidationException|Exception
-     */
-    public function getOne(array $data = [])
-    {
-        $endpoint = $this->getEndpoint('getOne/');
-        
-        $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -88,7 +48,10 @@ class InvoiceReceipts extends ApiAbstract
         $endpoint = $this->getEndpoint('insert/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'ordination' => ['required', 'numeric'],
+            'name' => ['required', 'string'],
+            'value' => ['required', 'string']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -108,7 +71,11 @@ class InvoiceReceipts extends ApiAbstract
         $endpoint = $this->getEndpoint('update/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'bank_account_id' => ['required', 'numeric'],
+            'ordination' => ['required', 'numeric'],
+            'name' => ['required', 'string'],
+            'value' => ['required', 'string']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -128,27 +95,8 @@ class InvoiceReceipts extends ApiAbstract
         $endpoint = $this->getEndpoint('delete/');
         
         $rules = [
-            // TODO
-        ];
-
-        $this->apiClient->validate($rules, $data);
-        
-        return $this->apiClient->postWithRetry($endpoint, $data);
-    }
-
-    /**
-     * Generate MB Reference
-     *
-     * @param array $data
-     * @return mixed
-     * @throws ValidationException|Exception
-     */
-    public function generateMBReference(array $data = [])
-    {
-        $endpoint = $this->getEndpoint('generateMBReference/');
-        
-        $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'bank_account_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
