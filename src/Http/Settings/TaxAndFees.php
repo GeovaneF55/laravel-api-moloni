@@ -28,7 +28,13 @@ class TaxAndFees extends ApiAbstract
         $endpoint = $this->getEndpoint('getAll/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'country_id' => ['numeric'],
+            'fiscal_zone' => ['string'],
+            'value' => ['float'],
+            'type' => ['numeric'],
+            'active_by_default' => ['boolean'],
+            'with_invisible' => ['boolean']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -48,7 +54,16 @@ class TaxAndFees extends ApiAbstract
         $endpoint = $this->getEndpoint('insert/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'name' => ['required', 'string'],
+            'value' => ['required', 'float'],
+            'type' => ['required', 'numeric'],
+            'saft_type' => ['required', 'numeric'],
+            'vat_type' => ['required', 'string'],
+            'stamp_tax' => ['required', 'string'],
+            'exemption_reason' => ['required', 'string'],
+            'fiscal_zone' => ['required', 'string'],
+            'active_by_default' => ['required', 'boolean']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -68,7 +83,17 @@ class TaxAndFees extends ApiAbstract
         $endpoint = $this->getEndpoint('update/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'tax_id' => ['required', 'numeric'],
+            'name' => ['required', 'string'],
+            'value' => ['required', 'float'],
+            'type' => ['required', 'numeric'],
+            'saft_type' => ['required', 'numeric'],
+            'vat_type' => ['required', 'string'],
+            'stamp_tax' => ['required', 'string'],
+            'exemption_reason' => ['required', 'string'],
+            'fiscal_zone' => ['required', 'string'],
+            'active_by_default' => ['required', 'boolean']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -88,7 +113,8 @@ class TaxAndFees extends ApiAbstract
         $endpoint = $this->getEndpoint('delete/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'tax_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
