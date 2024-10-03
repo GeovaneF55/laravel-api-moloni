@@ -28,7 +28,7 @@ class MaturityDates extends ApiAbstract
         $endpoint = $this->getEndpoint('getAll/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -48,7 +48,10 @@ class MaturityDates extends ApiAbstract
         $endpoint = $this->getEndpoint('insert/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'name' => ['required', 'string'],
+            'days' => ['required', 'numeric'],
+            'associated_discount' => ['required', 'float']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -68,7 +71,11 @@ class MaturityDates extends ApiAbstract
         $endpoint = $this->getEndpoint('update/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'maturity_date_id' => ['required', 'numeric'],
+            'name' => ['required', 'string'],
+            'days' => ['required', 'numeric'],
+            'associated_discount' => ['required', 'float']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -88,7 +95,8 @@ class MaturityDates extends ApiAbstract
         $endpoint = $this->getEndpoint('delete/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'maturity_date_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -108,7 +116,8 @@ class MaturityDates extends ApiAbstract
         $endpoint = $this->getEndpoint('countModifiedSince/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'lastmodified' => ['required', 'date']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -128,7 +137,8 @@ class MaturityDates extends ApiAbstract
         $endpoint = $this->getEndpoint('getModifiedSince/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'lastmodified' => ['required', 'date']
         ];
 
         $this->apiClient->validate($rules, $data);
