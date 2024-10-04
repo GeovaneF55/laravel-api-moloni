@@ -51,7 +51,7 @@ class MaturityDates extends ApiAbstract
             'company_id' => ['required', 'numeric'],
             'name' => ['required', 'string'],
             'days' => ['required', 'numeric'],
-            'associated_discount' => ['required', 'float']
+            'associated_discount' => ['required', 'float', 'min:0', 'max:100']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -75,7 +75,7 @@ class MaturityDates extends ApiAbstract
             'maturity_date_id' => ['required', 'numeric'],
             'name' => ['required', 'string'],
             'days' => ['required', 'numeric'],
-            'associated_discount' => ['required', 'float']
+            'associated_discount' => ['required', 'float', 'min:0', 'max:100']
         ];
 
         $this->apiClient->validate($rules, $data);

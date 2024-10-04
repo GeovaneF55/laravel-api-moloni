@@ -8,6 +8,7 @@ use Geovanefss\LaravelApiMoloni\Http\Company\Subscription;
 use Geovanefss\LaravelApiMoloni\Http\Company\Users;
 use Geovanefss\LaravelApiMoloni\Http\Documents\BillsOfLanding;
 use Geovanefss\LaravelApiMoloni\Http\Documents\CreditNotes;
+use Geovanefss\LaravelApiMoloni\Http\Documents\CustomerReturnNotes;
 use Geovanefss\LaravelApiMoloni\Http\Documents\DebitNotes;
 use Geovanefss\LaravelApiMoloni\Http\Documents\DeliveryNotes;
 use Geovanefss\LaravelApiMoloni\Http\Documents\Documents;
@@ -138,6 +139,16 @@ class Moloni
     public function creditNotes(): CreditNotes
     {
         return new CreditNotes($this->apiClient);
+    }
+
+    /**
+     * Customer Return Notes API
+     *
+     * @return CustomerReturnNotes
+     */
+    public function customerReturnNotes(): CustomerReturnNotes
+    {
+        return new CustomerReturnNotes($this->apiClient);
     }
 
     /**

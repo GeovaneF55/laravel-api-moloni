@@ -3,7 +3,7 @@ namespace Geovanefss\LaravelApiMoloni\Http\Documents;
 
 use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
 
-class CreditNotes extends ApiAbstract
+class CustomerReturnNotes extends ApiAbstract
 {
     /**
      * Get Endpoint
@@ -13,7 +13,7 @@ class CreditNotes extends ApiAbstract
      */
     public function getEndpoint(string $endpoint = ''): string
     {
-        return 'creditNotes/' . $endpoint;
+        return 'customerReturnNotes/' . $endpoint;
     }
 
     /**
@@ -30,19 +30,15 @@ class CreditNotes extends ApiAbstract
         $rules = [
             'company_id' => ['required', 'numeric'],
             'customer_id' => ['numeric'],
-            'supplier_id' => ['numeric'],
-            'salesman_id' => ['numeric'],
             'document_set_id' => ['numeric'],
             'number' => ['numeric'],
             'date' => ['date'],
-            'expiration_date' => ['date'],
             'year' => ['numeric'],
-            'your_reference' => ['string'],
-            'our_reference' => ['string']
+            'your_reference' => ['string']
         ];
 
         $this->apiClient->validate($rules, $data);
-
+        
         return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
@@ -59,22 +55,18 @@ class CreditNotes extends ApiAbstract
         
         $rules = [
             'company_id' => ['required', 'numeric'],
-            'qty' => ['required', 'numeric'],
-            'offset' => ['required', 'numeric'],
+            'qty' => ['numeric'],
+            'offset' => ['numeric'],
             'customer_id' => ['numeric'],
-            'supplier_id' => ['numeric'],
-            'salesman_id' => ['numeric'],
             'document_set_id' => ['numeric'],
             'number' => ['numeric'],
             'date' => ['date'],
-            'expiration_date' => ['date'],
             'year' => ['numeric'],
-            'your_reference' => ['string'],
-            'our_reference' => ['string']
+            'your_reference' => ['string']
         ];
 
         $this->apiClient->validate($rules, $data);
-
+        
         return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
@@ -91,21 +83,17 @@ class CreditNotes extends ApiAbstract
         
         $rules = [
             'company_id' => ['required', 'numeric'],
-            'document_id' => ['required', 'numeric'],
+            'document_id' => ['numeric'],
             'customer_id' => ['numeric'],
-            'supplier_id' => ['numeric'],
-            'salesman_id' => ['numeric'],
             'document_set_id' => ['numeric'],
             'number' => ['numeric'],
             'date' => ['date'],
-            'expiration_date' => ['date'],
             'year' => ['numeric'],
-            'your_reference' => ['string'],
-            'our_reference' => ['string']
+            'your_reference' => ['string']
         ];
 
         $this->apiClient->validate($rules, $data);
-
+        
         return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
@@ -127,31 +115,20 @@ class CreditNotes extends ApiAbstract
             'customer_id' => ['required', 'numeric'],
             'alternate_address_id' => ['numeric'],
             'your_reference' => ['string'],
-            'our_reference' => ['string'],
             'financial_discount' => ['float', 'min:0', 'max:100'],
-            'salesman_id' => ['numeric'],
-            'salesman_commission' => ['float'],
-            'associated_documents' => ['required', 'array'],
+            'associated_documents' => ['array'],
             'associated_documents.associated_id' => ['required', 'numeric'],
             'associated_documents.value' => ['required', 'float'],
-            'rappel' => ['array'],
-            'rappel.date_start' => ['date'],
-            'rappel.date_end' => ['date'],
-            'rappel.notes' => ['string'],
             'related_documents_notes' => ['string'],
             'products' => ['required', 'array'],
             'products.product_id' => ['required', 'numeric'],
-            'products.related_id' => ['required', 'numeric'],
             'products.name' => ['required', 'string'],
-            'products.summary' => ['required', 'string'],
+            'products.summary' => ['string'],
             'products.qty' => ['required', 'float'],
             'products.price' => ['required', 'float'],
             'products.discount' => ['float', 'min:0', 'max:100'],
-            'products.deduction_id' => ['numeric'],
             'products.order' => ['numeric'],
             'products.exemption_reason' => ['string'],
-            'products.warehouse_id' => ['numeric'],
-            'products.has_stock' => ['boolean'],
             'products.taxes' => ['array'],
             'products.taxes.tax_id' => ['required', 'numeric'],
             'products.taxes.value' => ['float'],
@@ -160,7 +137,7 @@ class CreditNotes extends ApiAbstract
             'products.child_products' => ['array'],
             'products.child_products.product_id' => ['required', 'numeric'],
             'products.child_products.name' => ['required', 'string'],
-            'products.child_products.summary' => ['required', 'string'],
+            'products.child_products.summary' => ['string'],
             'products.child_products.qty' => ['required', 'float'],
             'products.child_products.price' => ['required', 'float'],
             'products.child_products.discount' => ['float', 'min:0', 'max:100'],
@@ -169,7 +146,6 @@ class CreditNotes extends ApiAbstract
             'products.child_products.origin_id' => ['numeric'],
             'products.child_products.exemption_reason' => ['string'],
             'products.child_products.warehouse_id' => ['numeric'],
-            'products.child_products.has_stock' => ['boolean'],
             'products.child_products.properties' => ['array'],
             'products.child_products.properties.title' => ['string'],
             'products.child_products.properties.value' => ['string'],
@@ -180,12 +156,25 @@ class CreditNotes extends ApiAbstract
             'products.child_products.taxes.cumulative' => ['numeric'],
             'exchange_currency_id' => ['numeric'],
             'exchange_rate' => ['float'],
+            'delivery_method_id' => ['numeric'],
+            'delivery_datetime' => ['required', 'date'],
+            'delivery_departure_address' => ['string'],
+            'delivery_departure_city' => ['string'],
+            'delivery_departure_zip_code' => ['string'],
+            'delivery_departure_country' => ['numeric'],
+            'delivery_destination_address' => ['string'],
+            'delivery_destination_city' => ['string'],
+            'delivery_destination_zip_code' => ['string'],
+            'delivery_destination_country' => ['numeric'],
+            'vehicle_id' => ['numeric'],
+            'vehicle_name' => ['string'],
+            'vehicle_number_plate' => ['string'],
             'notes' => ['string'],
             'status' => ['numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
-
+        
         return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
@@ -208,31 +197,20 @@ class CreditNotes extends ApiAbstract
             'customer_id' => ['required', 'numeric'],
             'alternate_address_id' => ['numeric'],
             'your_reference' => ['string'],
-            'our_reference' => ['string'],
             'financial_discount' => ['float', 'min:0', 'max:100'],
-            'salesman_id' => ['numeric'],
-            'salesman_commission' => ['float'],
-            'associated_documents' => ['required', 'array'],
+            'associated_documents' => ['array'],
             'associated_documents.associated_id' => ['required', 'numeric'],
             'associated_documents.value' => ['required', 'float'],
-            'rappel' => ['array'],
-            'rappel.date_start' => ['date'],
-            'rappel.date_end' => ['date'],
-            'rappel.notes' => ['string'],
             'related_documents_notes' => ['string'],
             'products' => ['required', 'array'],
             'products.product_id' => ['required', 'numeric'],
-            'products.related_id' => ['required', 'numeric'],
             'products.name' => ['required', 'string'],
-            'products.summary' => ['required', 'string'],
+            'products.summary' => ['string'],
             'products.qty' => ['required', 'float'],
             'products.price' => ['required', 'float'],
             'products.discount' => ['float', 'min:0', 'max:100'],
-            'products.deduction_id' => ['numeric'],
             'products.order' => ['numeric'],
             'products.exemption_reason' => ['string'],
-            'products.warehouse_id' => ['numeric'],
-            'products.has_stock' => ['boolean'],
             'products.taxes' => ['array'],
             'products.taxes.tax_id' => ['required', 'numeric'],
             'products.taxes.value' => ['float'],
@@ -241,7 +219,7 @@ class CreditNotes extends ApiAbstract
             'products.child_products' => ['array'],
             'products.child_products.product_id' => ['required', 'numeric'],
             'products.child_products.name' => ['required', 'string'],
-            'products.child_products.summary' => ['required', 'string'],
+            'products.child_products.summary' => ['string'],
             'products.child_products.qty' => ['required', 'float'],
             'products.child_products.price' => ['required', 'float'],
             'products.child_products.discount' => ['float', 'min:0', 'max:100'],
@@ -250,7 +228,6 @@ class CreditNotes extends ApiAbstract
             'products.child_products.origin_id' => ['numeric'],
             'products.child_products.exemption_reason' => ['string'],
             'products.child_products.warehouse_id' => ['numeric'],
-            'products.child_products.has_stock' => ['boolean'],
             'products.child_products.properties' => ['array'],
             'products.child_products.properties.title' => ['string'],
             'products.child_products.properties.value' => ['string'],
@@ -261,12 +238,25 @@ class CreditNotes extends ApiAbstract
             'products.child_products.taxes.cumulative' => ['numeric'],
             'exchange_currency_id' => ['numeric'],
             'exchange_rate' => ['float'],
+            'delivery_method_id' => ['numeric'],
+            'delivery_datetime' => ['required', 'date'],
+            'delivery_departure_address' => ['string'],
+            'delivery_departure_city' => ['string'],
+            'delivery_departure_zip_code' => ['string'],
+            'delivery_departure_country' => ['numeric'],
+            'delivery_destination_address' => ['string'],
+            'delivery_destination_city' => ['string'],
+            'delivery_destination_zip_code' => ['string'],
+            'delivery_destination_country' => ['numeric'],
+            'vehicle_id' => ['numeric'],
+            'vehicle_name' => ['string'],
+            'vehicle_number_plate' => ['string'],
             'notes' => ['string'],
             'status' => ['numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
-
+        
         return $this->apiClient->postWithRetry($endpoint, $data);
     }
 
@@ -287,7 +277,29 @@ class CreditNotes extends ApiAbstract
         ];
 
         $this->apiClient->validate($rules, $data);
+        
+        return $this->apiClient->postWithRetry($endpoint, $data);
+    }
 
+    /**
+     * Set Transport Code
+     *
+     * @param array $data
+     * @return mixed
+     * @throws ValidationException|Exception
+     */
+    public function setTransportCode(array $data = [])
+    {
+        $endpoint = $this->getEndpoint('setTransportCode/');
+        
+        $rules = [
+            'company_id' => ['required', 'numeric'],
+            'document_id' => ['required', 'numeric'],
+            'transport_code' => ['required', 'string']
+        ];
+
+        $this->apiClient->validate($rules, $data);
+        
         return $this->apiClient->postWithRetry($endpoint, $data);
     }
 }
