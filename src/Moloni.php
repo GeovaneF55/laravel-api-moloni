@@ -1,11 +1,15 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni;
 
+// ACCOUNT AND PROFILE
 use Geovanefss\LaravelApiMoloni\Http\AccountAndProfile\MyProfile;
+// APIs' CLIENT
 use Geovanefss\LaravelApiMoloni\Http\ApiClient;
+// COMPANY
 use Geovanefss\LaravelApiMoloni\Http\Company\Company;
 use Geovanefss\LaravelApiMoloni\Http\Company\Subscription;
 use Geovanefss\LaravelApiMoloni\Http\Company\Users;
+// DOCUMENTS
 use Geovanefss\LaravelApiMoloni\Http\Documents\BillsOfLanding;
 use Geovanefss\LaravelApiMoloni\Http\Documents\CreditNotes;
 use Geovanefss\LaravelApiMoloni\Http\Documents\CustomerReturnNotes;
@@ -31,10 +35,12 @@ use Geovanefss\LaravelApiMoloni\Http\Documents\SupplierReturnNotes;
 use Geovanefss\LaravelApiMoloni\Http\Documents\SupplierSimplifiedInvoices;
 use Geovanefss\LaravelApiMoloni\Http\Documents\SupplierWarrantyRequests;
 use Geovanefss\LaravelApiMoloni\Http\Documents\Waybills;
+// ENTITIES
 use Geovanefss\LaravelApiMoloni\Http\Entities\CustomerAlternateAddresses;
 use Geovanefss\LaravelApiMoloni\Http\Entities\Customers;
 use Geovanefss\LaravelApiMoloni\Http\Entities\Salesman;
 use Geovanefss\LaravelApiMoloni\Http\Entities\Suppliers;
+// GLOBAL DATA
 use Geovanefss\LaravelApiMoloni\Http\GlobalData\Countries;
 use Geovanefss\LaravelApiMoloni\Http\GlobalData\Currencies;
 use Geovanefss\LaravelApiMoloni\Http\GlobalData\CurrencyExchange;
@@ -43,10 +49,12 @@ use Geovanefss\LaravelApiMoloni\Http\GlobalData\FiscalZones;
 use Geovanefss\LaravelApiMoloni\Http\GlobalData\Languages;
 use Geovanefss\LaravelApiMoloni\Http\GlobalData\MultibancoGateways;
 use Geovanefss\LaravelApiMoloni\Http\GlobalData\TaxExemptions;
+// PRODUCTS
 use Geovanefss\LaravelApiMoloni\Http\Products\PriceClasses;
 use Geovanefss\LaravelApiMoloni\Http\Products\ProductCategories;
 use Geovanefss\LaravelApiMoloni\Http\Products\Products;
 use Geovanefss\LaravelApiMoloni\Http\Products\ProductStocks;
+// SETTINGS
 use Geovanefss\LaravelApiMoloni\Http\Settings\BankAccounts;
 use Geovanefss\LaravelApiMoloni\Http\Settings\Deductions;
 use Geovanefss\LaravelApiMoloni\Http\Settings\DocumentSets;
