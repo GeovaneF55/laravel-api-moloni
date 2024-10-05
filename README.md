@@ -62,7 +62,7 @@ try {
         // 'redirect_uri' => getenv('MOLONI_REDIRECT_URI'),
         // 'authorization_code' => getenv('MOLONI_AUTHORIZATION_CODE'),
         'username' => getenv('MOLONI_USERNAME'),                // Required
-        'password' => getenv('MOLONI_PASSWORD')                 // Required
+        'password' => getenv('MOLONI_PASSWORD'),                // Required
     ];
     
     // Initialize Moloni instance
