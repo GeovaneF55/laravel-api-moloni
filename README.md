@@ -61,7 +61,7 @@ try {
         // 'response_type' => getenv('MOLONI_RESPONSE_TYPE'),
         // 'redirect_uri' => getenv('MOLONI_REDIRECT_URI'),
         // 'authorization_code' => getenv('MOLONI_AUTHORIZATION_CODE'),
-        'username' => getenv('MOLONI_USERNAME')                 // Required
+        'username' => getenv('MOLONI_USERNAME'),                // Required
         'password' => getenv('MOLONI_PASSWORD')                 // Required
     ];
     
