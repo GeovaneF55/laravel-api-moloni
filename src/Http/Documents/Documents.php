@@ -28,7 +28,7 @@ class Documents extends ApiAbstract
         $endpoint = $this->getEndpoint('getAllDocumentTypes/');
         
         $rules = [
-            // TODO
+            'language_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -48,7 +48,9 @@ class Documents extends ApiAbstract
         $endpoint = $this->getEndpoint('getByMBReference/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'entity' => ['required', 'numeric'],
+            'reference' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -68,7 +70,10 @@ class Documents extends ApiAbstract
         $endpoint = $this->getEndpoint('setMBReferenceAsPaid/');
         
         $rules = [
-            // TODO
+            'document_id' => ['required', 'numeric'],
+            'reference_id' => ['required', 'numeric'],
+            'entity' => ['required', 'numeric'],
+            'reference' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -88,7 +93,17 @@ class Documents extends ApiAbstract
         $endpoint = $this->getEndpoint('count/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'customer_id' => ['numeric'],
+            'supplier_id' => ['numeric'],
+            'salesman_id' => ['numeric'],
+            'document_set_id' => ['numeric'],
+            'number' => ['numeric'],
+            'date' => ['date'],
+            'expiration_date' => ['date'],
+            'year' => ['numeric'],
+            'your_reference' => ['string'],
+            'our_reference' => ['string']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -108,7 +123,20 @@ class Documents extends ApiAbstract
         $endpoint = $this->getEndpoint('getAll/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'customer_id' => ['numeric'],
+            'qty' => ['numeric'],
+            'offset' => ['numeric'],
+            'supplier_id' => ['numeric'],
+            'salesman_id' => ['numeric'],
+            'document_set_id' => ['numeric'],
+            'number' => ['numeric'],
+            'date' => ['date'],
+            'expiration_date' => ['date'],
+            'year' => ['numeric'],
+            'your_reference' => ['string'],
+            'our_reference' => ['string'],
+            'status' => ['string']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -128,7 +156,17 @@ class Documents extends ApiAbstract
         $endpoint = $this->getEndpoint('getOne/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'customer_id' => ['numeric'],
+            'supplier_id' => ['numeric'],
+            'salesman_id' => ['numeric'],
+            'document_set_id' => ['numeric'],
+            'number' => ['numeric'],
+            'date' => ['date'],
+            'expiration_date' => ['date'],
+            'year' => ['numeric'],
+            'your_reference' => ['string'],
+            'our_reference' => ['string']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -148,7 +186,8 @@ class Documents extends ApiAbstract
         $endpoint = $this->getEndpoint('getPDFLink/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'document_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -168,7 +207,18 @@ class Documents extends ApiAbstract
         $endpoint = $this->getEndpoint('countModifiedSince/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'lastmodified' => ['required', 'date'],
+            'customer_id' => ['numeric'],
+            'supplier_id' => ['numeric'],
+            'salesman_id' => ['numeric'],
+            'document_set_id' => ['numeric'],
+            'number' => ['numeric'],
+            'date' => ['date'],
+            'expiration_date' => ['date'],
+            'year' => ['numeric'],
+            'your_reference' => ['string'],
+            'our_reference' => ['string']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -188,7 +238,20 @@ class Documents extends ApiAbstract
         $endpoint = $this->getEndpoint('getModifiedSince/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'lastmodified' => ['required', 'date'],
+            'qty' => ['numeric'],
+            'offset' => ['numeric'],
+            'customer_id' => ['numeric'],
+            'supplier_id' => ['numeric'],
+            'salesman_id' => ['numeric'],
+            'document_set_id' => ['numeric'],
+            'number' => ['numeric'],
+            'date' => ['date'],
+            'expiration_date' => ['date'],
+            'year' => ['numeric'],
+            'your_reference' => ['string'],
+            'our_reference' => ['string']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -208,7 +271,9 @@ class Documents extends ApiAbstract
         $endpoint = $this->getEndpoint('deleteMBReference/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'document_id' => ['required', 'numeric'],
+            'reference_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -228,7 +293,9 @@ class Documents extends ApiAbstract
         $endpoint = $this->getEndpoint('documentCancel/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'document_id' => ['required', 'numeric'],
+            'observation' => ['string']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -248,7 +315,9 @@ class Documents extends ApiAbstract
         $endpoint = $this->getEndpoint('documentDraft/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'document_id' => ['required', 'numeric'],
+            'keep_conciliations' => ['numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
