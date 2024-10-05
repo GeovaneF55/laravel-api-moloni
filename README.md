@@ -1,7 +1,7 @@
-<h1 align="center">Moloni's API Client for PHP <a href="https://packagist.org/packages/geovanefss/laravel-api-moloni">geovanefss/laravel-api-moloni</a></h1>
+<h1 align="center">Geovane's Moloni's API Client for PHP</h1>
 
 <div align="center">
-  <p>Geovane's Moloni's API Client for PHP</p>
+  <p><a href="https://packagist.org/packages/geovanefss/laravel-api-moloni">https://packagist.org/packages/geovanefss/laravel-api-moloni</a></p>
   <img src="https://img.shields.io/badge/php-7.4-brightgreen.svg?logo=php&longCache=true" alt="Supported PHP Versions" />
     <a href="https://github.com/GeovaneF55/laravel-api-moloni/releases">
         <img alt="GitHub Release" src="https://img.shields.io/github/v/release/GeovaneF55/laravel-api-moloni?include_prereleases">
