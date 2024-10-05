@@ -1,4 +1,14 @@
-# My PHP API Moloni Client (laravel-api-moloni)
+<h1 align="center">Moloni's API Client for PHP <a href="https://packagist.org/packages/geovanefss/laravel-api-moloni">geovanefss/laravel-api-moloni</a></h1>
+
+<div align="center">
+  <p>Geovane's Moloni's API Client for PHP</p>
+  <img src="https://img.shields.io/badge/php-7.4-brightgreen.svg?logo=php&longCache=true" alt="Supported PHP Versions" />
+    <a href="https://github.com/GeovaneF55/laravel-api-moloni/releases">
+        <img alt="GitHub Release" src="https://img.shields.io/github/v/release/GeovaneF55/laravel-api-moloni?include_prereleases">
+    </a>
+  <a href="https://github.com/markshust/docker-magento/graphs/commit-activity" target="_blank"><img src="https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg" alt="Maintained - Yes" /></a>
+  <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/badge/license-MIT-blue.svg" /></a>
+</div>
 
 ## Installation
 
