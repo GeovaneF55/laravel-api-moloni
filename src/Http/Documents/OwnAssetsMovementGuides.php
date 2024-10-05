@@ -265,7 +265,7 @@ class OwnAssetsMovementGuides extends ApiAbstract
         
         $rules = [
             'company_id' => ['required', 'numeric'],
-            'document_id' => ['numeric']
+            'document_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
