@@ -28,7 +28,13 @@ class SupplierReceipts extends ApiAbstract
         $endpoint = $this->getEndpoint('count/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'supplier_id' => ['numeric'],
+            'document_set_id' => ['numeric'],
+            'number' => ['numeric'],
+            'date' => ['date'],
+            'year' => ['numeric'],
+            'your_reference' => ['string']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -48,7 +54,15 @@ class SupplierReceipts extends ApiAbstract
         $endpoint = $this->getEndpoint('getAll/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'qty' => ['numeric'],
+            'offset' => ['numeric'],
+            'supplier_id' => ['numeric'],
+            'document_set_id' => ['numeric'],
+            'number' => ['numeric'],
+            'date' => ['date'],
+            'year' => ['numeric'],
+            'your_reference' => ['string']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -68,7 +82,14 @@ class SupplierReceipts extends ApiAbstract
         $endpoint = $this->getEndpoint('getOne/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'document_id' => ['required', 'numeric'],
+            'supplier_id' => ['numeric'],
+            'document_set_id' => ['numeric'],
+            'number' => ['numeric'],
+            'date' => ['date'],
+            'year' => ['numeric'],
+            'your_reference' => ['string']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -88,7 +109,25 @@ class SupplierReceipts extends ApiAbstract
         $endpoint = $this->getEndpoint('insert/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'date' => ['required', 'date'],
+            'document_set_id' => ['required', 'numeric'],
+            'customer_id' => ['required', 'numeric'],
+            'alternate_address_id' => ['required', 'numeric'],
+            'net_value' => ['required', 'float'],
+            'associated_documents' => ['required', 'numeric'],
+            'associated_documents.associated_id' => ['required', 'numeric'],
+            'associated_documents.value' => ['required', 'float'],
+            'related_documents_notes' => ['string'],
+            'payments' => ['array'],
+            'payments.payment_method_id' => ['required', 'numeric'],
+            'payments.date' => ['required', 'date'],
+            'payments.value' => ['required', 'float'],
+            'payments.notes' => ['string'],
+            'exchange_currency_id' => ['numeric'],
+            'exchange_rate' => ['float'],
+            'notes' => ['string'],
+            'status' => ['numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -108,7 +147,26 @@ class SupplierReceipts extends ApiAbstract
         $endpoint = $this->getEndpoint('update/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'document_id' => ['required', 'numeric'],
+            'date' => ['required', 'date'],
+            'document_set_id' => ['required', 'numeric'],
+            'customer_id' => ['required', 'numeric'],
+            'alternate_address_id' => ['required', 'numeric'],
+            'net_value' => ['required', 'float'],
+            'associated_documents' => ['required', 'numeric'],
+            'associated_documents.associated_id' => ['required', 'numeric'],
+            'associated_documents.value' => ['required', 'float'],
+            'related_documents_notes' => ['string'],
+            'payments' => ['array'],
+            'payments.payment_method_id' => ['required', 'numeric'],
+            'payments.date' => ['required', 'date'],
+            'payments.value' => ['required', 'float'],
+            'payments.notes' => ['string'],
+            'exchange_currency_id' => ['numeric'],
+            'exchange_rate' => ['float'],
+            'notes' => ['string'],
+            'status' => ['numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
@@ -128,7 +186,8 @@ class SupplierReceipts extends ApiAbstract
         $endpoint = $this->getEndpoint('delete/');
         
         $rules = [
-            // TODO
+            'company_id' => ['required', 'numeric'],
+            'document_id' => ['required', 'numeric']
         ];
 
         $this->apiClient->validate($rules, $data);
