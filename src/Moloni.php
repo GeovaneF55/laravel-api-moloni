@@ -89,6 +89,18 @@ class Moloni
     }
 
     /**
+     * Set Tokens
+     *
+     * @param string $accessToken
+     * @param string $refreshToken
+     * @return void
+     */
+    public function setTokens(string $accessToken, string $refreshToken)
+    {
+        $this->apiClient->setTokenManager($accessToken, $refreshToken);
+    }
+
+    /**
      * Start Debug
      *
      * @return Moloni
