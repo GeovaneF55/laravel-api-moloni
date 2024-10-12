@@ -44,9 +44,16 @@ class ApiClient
     /**
      * Debug
      *
-     * @var string $debug
+     * @var bool $debug
      */
     protected $debug;
+
+    /**
+     * Validate
+     *
+     * @var bool $debug
+     */
+    protected $validate;
 
     /**
      * Constructor
@@ -56,7 +63,9 @@ class ApiClient
     public function __construct(array $configs, $apiVersion = 'v1')
     {
         $this->baseUrl = 'https://api.moloni.pt/' . $apiVersion . '/';
-        $this->debug = false;
+
+        $this->setDebug(false);
+        $this->setValidate(true);
 
         $this->httpClient = new HttpClient($this->baseUrl, $this->debug);
         $this->configs = $configs;
@@ -73,7 +82,21 @@ class ApiClient
     public function setDebug(bool $debug): void
     {
         $this->debug = $debug;
-        $this->httpClient->restartClient($this->baseUrl, $this->debug);
+
+        if (!empty($this->httpClient)) {
+            $this->httpClient->restartClient($this->baseUrl, $this->debug);
+        }
+    }
+
+    /**
+     * Set Validate
+     *
+     * @param bool $validate
+     * @return void
+     */
+    public function setValidate(bool $validate): void
+    {
+        $this->validate = $validate;
     }
 
     /**
@@ -99,7 +122,11 @@ class ApiClient
      */
     public function validate(array $rules, array $data): bool
     {
-        return $this->httpClient->validate($rules, $data);
+        if ($this->validate) {
+            return $this->httpClient->validate($rules, $data);
+        }
+
+        return true;
     }
 
     /**
@@ -148,33 +175,34 @@ class ApiClient
      */
     public function grantByRefreshToken()
     {
-        return (new Grant($this->httpClient))->grantByRefreshToken($this->configs);
+        $response = (new Grant($this->httpClient))->grantByRefreshToken($this->configs);
+
+        $this->tokenManager->setTokens($response);
+        $this->httpClient->setTokenManager($this->tokenManager);
+
+        return $response;
     }
 
     /**
-     * Handle Authorization or Grant
+     * Handle Grant By Password or Grant By Refresh Token
      *
      * @return mixed
      * @throws ApiException|ValidationException|TokenException
      */
-    private function authOrGrant()
+    private function passwordOrRefresh()
     {
         $rules = [
-            'grant_type' => ['required', 'string', 'enum:authorize,password,authorization_code,refresh_token'],
+            'grant_type' => ['required', 'string', 'enum:password,refresh_token'],
         ];
 
         $this->validate($rules, $this->configs);
 
         switch ($this->configs['grant_type']) {
-            case 'password':
-                return $this->grantByPassword();
-            case 'authorization_code':
-                return $this->grantByAuthCode();
             case 'refresh_token':
                 return $this->grantByRefreshToken();
-            case 'authorize':
+            case 'password':
             default:
-                return $this->authorize();
+                return $this->grantByPassword();
         }
     }
 
@@ -226,14 +254,14 @@ class ApiClient
     {
         try {
             if (empty($this->tokenManager->getAccessToken())) {
-                $this->authOrGrant();
+                $this->passwordOrRefresh();
             }
 
             return $this->httpClient->request($method, $endpoint, $options);
         } catch (ApiException | ValidationException | TokenException $e) {
             if ($retry > 0 && in_array($e->getCode(), [401, 404, 429, 503])) {
                 // Retry on certain status codes
-                $this->authOrGrant();
+                $this->passwordOrRefresh();
                 return $this->requestWithRetry($method, $endpoint, $options, $retry - 1);
             }
 

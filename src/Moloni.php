@@ -91,21 +91,45 @@ class Moloni
     /**
      * Start Debug
      *
-     * @return void
+     * @return Moloni
      */
     public function startDebug()
     {
         $this->apiClient->setDebug(true);
+        return $this;
     }
 
     /**
      * Stop Debug
      *
-     * @return void
+     * @return Moloni
      */
     public function stopDebug()
     {
         $this->apiClient->setDebug(false);
+        return $this;
+    }
+
+    /**
+     * Start Validate
+     *
+     * @return Moloni
+     */
+    public function startValidate()
+    {
+        $this->apiClient->setValidate(true);
+        return $this;
+    }
+
+    /**
+     * Stop Validate
+     *
+     * @return Moloni
+     */
+    public function stopValidate()
+    {
+        $this->apiClient->setValidate(false);
+        return $this;
     }
 
     // AUTH
