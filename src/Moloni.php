@@ -121,6 +121,39 @@ class Moloni
         return $this->apiClient->authorize($query);
     }
 
+    /**
+     * Grant By Password API
+     *
+     * @param array $query
+     * @return mixed
+     */
+    public function grantByPassword(array $query)
+    {
+        return $this->apiClient->grantByPassword($query);
+    }
+
+    /**
+     * Grant By Auth Code API
+     *
+     * @param array $query
+     * @return mixed
+     */
+    public function grantByAuthCode(array $query)
+    {
+        return $this->apiClient->grantByAuthCode($query);
+    }
+
+    /**
+     * Grant By Refresh Token API
+     *
+     * @param array $query
+     * @return mixed
+     */
+    public function grantByRefreshToken(array $query)
+    {
+        return $this->apiClient->grantByRefreshToken($query);
+    }
+
     // ACCOUNT AND PROFILE
 
     /**

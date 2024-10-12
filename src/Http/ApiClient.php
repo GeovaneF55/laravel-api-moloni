@@ -119,7 +119,7 @@ class ApiClient
      * @return mixed
      * @throws ApiException|ValidationException|TokenException
      */
-    private function grantByPassword()
+    public function grantByPassword()
     {
         $response = (new Grant($this->httpClient))->grantByPassword($this->configs);
 
@@ -135,7 +135,7 @@ class ApiClient
      * @return mixed
      * @throws ApiException|ValidationException|TokenException
      */
-    private function grantByAuthCode()
+    public function grantByAuthCode()
     {
         return (new Grant($this->httpClient))->grantByAuthCode($this->configs);
     }
@@ -146,7 +146,7 @@ class ApiClient
      * @return mixed
      * @throws ApiException|ValidationException|TokenException
      */
-    private function grantByRefreshToken()
+    public function grantByRefreshToken()
     {
         return (new Grant($this->httpClient))->grantByRefreshToken($this->configs);
     }
