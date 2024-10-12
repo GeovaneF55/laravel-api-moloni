@@ -54,19 +54,48 @@ try {
 
     // Set Moloni API configuration using environment variables
     $configs = [
-        // grant_type: Only password fully implemented yet (see: https://www.moloni.pt/dev/autenticacao/)
-        'grant_type' => getenv('MOLONI_GRANT_TYPE'),            // Required
-        'client_id' => getenv('MOLONI_CLIENT_ID'),              // Required
-        'client_secret' => getenv('MOLONI_CLIENT_SECRET'),      // Required
-        // 'response_type' => getenv('MOLONI_RESPONSE_TYPE'),
-        // 'redirect_uri' => getenv('MOLONI_REDIRECT_URI'),
-        // 'authorization_code' => getenv('MOLONI_AUTHORIZATION_CODE'),
-        'username' => getenv('MOLONI_USERNAME'),                // Required
-        'password' => getenv('MOLONI_PASSWORD'),                // Required
+        // Required (see: https://www.moloni.pt/dev/autenticacao/)
+        'grant_type' => getenv('MOLONI_GRANT_TYPE'),
+
+        // Required
+        'client_id' => getenv('MOLONI_CLIENT_ID'),
+
+        // Required
+        'client_secret' => getenv('MOLONI_CLIENT_SECRET'),
+
+        // Required (for authorize)
+        'response_type' => getenv('MOLONI_RESPONSE_TYPE'),
+        
+        // Required (for grant_type: authorization_code)
+        'redirect_uri' => getenv('MOLONI_REDIRECT_URI'),
+
+        // Required (for grant_type: authorization_code)
+        'authorization_code' => getenv('MOLONI_AUTHORIZATION_CODE'),
+
+        // Required (for grant_type: password)
+        'username' => getenv('MOLONI_USERNAME'),
+
+        // Required (for grant_type: password)
+        'password' => getenv('MOLONI_PASSWORD'),
+
+        // Required (for grant_type: refresh_token)
+        'refresh_token' => getenv('MOLONI_REFRESH_TOKEN'),
     ];
     
     // Initialize Moloni instance
     $moloni = new Moloni($configs);
+
+    // Start Debug API
+    $moloni->startDebug(); // default is to not Debug
+
+    // Stop Debug API
+    $moloni->stopDebug(); // default is to not Debug
+
+    // Stop Validate API
+    $moloni->stopValidate(); // default is to Validate
+
+    // Start Validate API
+    $moloni->startValidate(); // default is to Validate
 
     // Example: Fetch user profile from Moloni API
     $resp = $moloni->myProfile()->getMe();
