@@ -12,28 +12,108 @@ use GuzzleHttp\RequestOptions;
 
 class ApiClient
 {
-    const API_VERSION = 'v1';
-
+    /**
+     * HTTP Client
+     *
+     * @var HTTPClient $httpClient
+     */
     protected $httpClient;
+
+    /**
+     * Token Manager
+     *
+     * @var TokenManager $tokenManager
+     */
     protected $tokenManager;
+
+    /**
+     * Validator
+     *
+     * @var Validator $validator
+     */
     protected $validator;
+
+    /**
+     * Base URL
+     *
+     * @var string $baseUrl
+     */
+    protected $baseUrl;
+
+    /**
+     * Grant type
+     *
+     * @var string $grantType
+     */
     protected $grantType;
+
+    /**
+     * Grant type
+     *
+     * @var string $grantType
+     */
     protected $clientId;
+
+    /**
+     * Client Secret
+     *
+     * @var string $clientSecret
+     */
     protected $clientSecret;
+
+    /**
+     * Response Type
+     *
+     * @var string $responseType
+     */
     protected $responseType;
+
+    /**
+     * Redirect URI
+     *
+     * @var string $redirectUri
+     */
     protected $redirectUri;
+
+    /**
+     * Authorization Code
+     *
+     * @var string $authorizationCode
+     */
     protected $authorizationCode;
+
+    /**
+     * Username
+     *
+     * @var string $username
+     */
     protected $username;
+
+    /**
+     * Password
+     *
+     * @var string $password
+     */
     protected $password;
+
+    /**
+     * Debug
+     *
+     * @var string $debug
+     */
+    protected $debug;
 
     /**
      * Constructor
      *
      * @param array $configs
      */
-    public function __construct(array $configs)
+    public function __construct(array $configs, $apiVersion = 'v1')
     {
-        $this->httpClient = new HttpClient('https://api.moloni.pt/' . self::API_VERSION . '/');
+        $this->baseUrl = 'https://api.moloni.pt/' . $apiVersion . '/';
+        $this->debug = false;
+
+        $this->httpClient = new HttpClient($this->baseUrl, $this->debug);
         $this->tokenManager = new TokenManager();
         $this->validator = new Validator();
 
@@ -56,6 +136,18 @@ class ApiClient
         $this->authorizationCode = $configs['authorization_code'] ?? null;
         $this->username = $configs['username'] ?? null;
         $this->password = $configs['password'] ?? null;
+    }
+
+    /**
+     * Set Guzzle Debug
+     *
+     * @param bool $debug
+     * @return void
+     */
+    public function setDebug(bool $debug): void
+    {
+        $this->debug = $debug;
+        $this->httpClient->restartClient($this->baseUrl, $this->debug);
     }
 
     /**

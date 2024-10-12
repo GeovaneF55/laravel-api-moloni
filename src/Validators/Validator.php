@@ -26,7 +26,7 @@ class Validator
 
         foreach ($rules as $field => $rule) {
             if (!isset($data[$field])) {
-                $this->validateRequired($rule, $field);
+                $this->validateRequired($rule, $data, $field);
                 continue;
             }
 
@@ -35,20 +35,7 @@ class Validator
                     $this->validateArray($validation, $data, $field);
                     $this->validateRecursive($rules, $data[$field], "$field.");
                 } else {
-                    $this->validateString($validation, $data, $field);
-                    $this->validateFloat($validation, $data, $field);
-                    $this->validateArray($validation, $data, $field);
-                    $this->validateEmail($validation, $data, $field);
-                    $this->validateUrl($validation, $data, $field);
-                    $this->validateBoolean($validation, $data, $field);
-                    $this->validateDate($validation, $data, $field);
-                    $this->validateJson($validation, $data, $field);
-                    $this->validateIpAddress($validation, $data, $field);
-                    $this->validateEnum($validation, $data, $field);
-                    $this->validateInArray($validation, $data, $field);
-                    $this->validateNumeric($validation, $data, $field);
-                    $this->validateMin($validation, $data, $field);
-                    $this->validateMax($validation, $data, $field);
+                    $this->applyValidation($validation, $data, $field);
                 }
             }
         }
@@ -68,32 +55,23 @@ class Validator
      * @param string $prefix
      * @return void
      */
-    private function validateRecursive(array $rules, array $data, string $prefix)
+    private function validateRecursive(array $rules, array $data, string $prefix = '')
     {
         foreach ($data as $key => $value) {
             $fullKey = $prefix . $key;
 
+            // Check if the current item is an array and should be validated as such
             if (is_array($value)) {
                 if (isset($rules[$fullKey]) && in_array('array', $rules[$fullKey])) {
                     $this->validateArray('array', $data, $fullKey);
-                    $this->validateRecursive($rules, $value, "$fullKey.");
                 }
+                // Recursively validate nested arrays
+                $this->validateRecursive($rules, $value, "$fullKey.");
             } else {
-                if (isset($rules[$fullKey])) {
+                // Validate non-array items
+                if (isset($rules[$fullKey]) && is_array($rules[$fullKey])) {
                     foreach ($rules[$fullKey] as $validation) {
-                        $this->validateString($validation, $data, $fullKey);
-                        $this->validateFloat($validation, $data, $fullKey);
-                        $this->validateEmail($validation, $data, $fullKey);
-                        $this->validateUrl($validation, $data, $fullKey);
-                        $this->validateBoolean($validation, $data, $fullKey);
-                        $this->validateDate($validation, $data, $fullKey);
-                        $this->validateJson($validation, $data, $fullKey);
-                        $this->validateIpAddress($validation, $data, $fullKey);
-                        $this->validateEnum($validation, $data, $fullKey);
-                        $this->validateInArray($validation, $data, $fullKey);
-                        $this->validateNumeric($validation, $data, $fullKey);
-                        $this->validateMin($validation, $data, $fullKey);
-                        $this->validateMax($validation, $data, $fullKey);
+                        $this->applyValidation($validation, $data, $fullKey);
                     }
                 }
             }
@@ -101,15 +79,41 @@ class Validator
     }
 
     /**
+     * Apply Validation
+     *
+     * @param string $validation
+     * @param array $data
+     * @param string $fullKey
+     * @return void
+     */
+    private function applyValidation(string $validation, array $data, string $fullKey)
+    {
+        $this->validateString($validation, $data, $fullKey);
+        $this->validateFloat($validation, $data, $fullKey);
+        $this->validateEmail($validation, $data, $fullKey);
+        $this->validateUrl($validation, $data, $fullKey);
+        $this->validateBoolean($validation, $data, $fullKey);
+        $this->validateDate($validation, $data, $fullKey);
+        $this->validateJson($validation, $data, $fullKey);
+        $this->validateIpAddress($validation, $data, $fullKey);
+        $this->validateEnum($validation, $data, $fullKey);
+        $this->validateInArray($validation, $data, $fullKey);
+        $this->validateNumeric($validation, $data, $fullKey);
+        $this->validateMin($validation, $data, $fullKey);
+        $this->validateMax($validation, $data, $fullKey);
+    }
+
+    /**
      * Validate Required
      *
      * @param array $rule
+     * @param array $data
      * @param string $field
      * @return void
      */
-    public function validateRequired(array $rule, string $field)
+    public function validateRequired(array $rule, array $data, string $field)
     {
-        if (in_array('required', $rule)) {
+        if (in_array('required', $rule) && !array_key_exists($field, $data)) {
             $this->errors[$field] = "$field is required.";
         }
     }
@@ -277,7 +281,7 @@ class Validator
      */
     public function validateNumeric(string $validation, array $data, string $field)
     {
-        if ($validation === 'numeric' && !is_numeric($data[$field])) {
+        if ($validation === 'numeric' && !is_numeric($data[$field]) && !array_key_exists($field, $data)) {
             $this->errors[$field] = "$field must be numeric.";
         }
     }

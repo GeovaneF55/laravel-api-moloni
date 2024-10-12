@@ -70,17 +70,41 @@ use Geovanefss\LaravelApiMoloni\Http\Settings\Warehouses;
 
 class Moloni
 {
+    /**
+     * API Client
+     *
+     * @var ApiClient $apiClient
+     */
     protected $apiClient;
-    protected $configs;
 
     /**
      * Constructor
      *
      * @param array $configs
      */
-    public function __construct(array $configs)
+    public function __construct(array $configs, $apiVersion = 'v1')
     {
-        $this->apiClient = new ApiClient($configs);
+        $this->apiClient = new ApiClient($configs, $apiVersion);
+    }
+
+    /**
+     * Start Debug
+     *
+     * @return void
+     */
+    public function startDebug()
+    {
+        $this->apiClient->setDebug(true);
+    }
+
+    /**
+     * Stop Debug
+     *
+     * @return void
+     */
+    public function stopDebug()
+    {
+        $this->apiClient->setDebug(false);
     }
 
     // ACCOUNT AND PROFILE

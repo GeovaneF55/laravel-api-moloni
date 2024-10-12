@@ -6,22 +6,74 @@ use Geovanefss\LaravelApiMoloni\Exceptions\ApiException;
 
 class HttpClient
 {
+    /**
+     * Base URL
+     *
+     * @var string
+     */
     protected $baseUrl;
+
+    /**
+     * Client
+     *
+     * @var Client $client
+     */
     protected $client;
+
+    /**
+     * Access Token
+     *
+     * @var string $accessToken
+     */
     protected $accessToken;
+
+    /**
+     * Debug
+     *
+     * @var bool $debug
+     */
+    protected $debug;
 
     /**
      * Http Client
      *
      * @param string $baseUrl
+     * @param bool $debug
      */
-    public function __construct(string $baseUrl)
+    public function __construct(string $baseUrl, bool $debug = false)
     {
         $this->baseUrl = $baseUrl;
+        $this->debug = $debug;
+
+        $this->startClient();
+    }
+
+    /**
+     * Start Client
+     *
+     * @return void
+     */
+    protected function startClient()
+    {
         $this->client = new Client([
-            'base_uri' => $baseUrl,
-            'http_errors' => false
+            'base_uri' => $this->baseUrl,
+            'http_errors' => $this->debug
         ]);
+    }
+
+    /**
+     * Restart Client
+     *
+     * @param string $baseUrl
+     * @param bool $debug
+     * @return void
+     */
+    public function restartClient(string $baseUrl, bool $debug = false)
+    {
+        $this->baseUrl = $baseUrl;
+        $this->debug = $debug;
+        
+        $this->startClient();
     }
 
     /**
@@ -43,12 +95,6 @@ class HttpClient
      */
     public function getProcessedOptions(array $options): array
     {
-        $options = array_merge_recursive($options, [
-            'query' => [
-                'json' => true
-            ]
-        ]);
-
         if ($this->accessToken) {
             $options = array_merge_recursive($options, [
                 'query' => [
@@ -56,6 +102,13 @@ class HttpClient
                 ]
             ]);
         }
+
+        $options = array_merge_recursive($options, [
+            'query' => [
+                'json' => true
+            ],
+            'debug' => $this->debug
+        ]);
 
         return $options;
     }
@@ -73,13 +126,17 @@ class HttpClient
     {
         $url = $this->baseUrl . $endpoint;
         $options = $this->getProcessedOptions($options);
+        
         $response = $this->client->request($method, $url, $options);
 
-        if ($response->getStatusCode() != 200) {
-            throw new ApiException($response, $response->getStatusCode());
+        $responseCode = $response->getStatusCode();
+        $responseContents = $response->getBody()->getContents();
+
+        if ($responseCode != 200) {
+            throw new ApiException($response, $responseCode);
         }
 
-        return json_decode($response->getBody()->getContents(), true);
+        return json_decode($responseContents, true);
     }
 
     /**

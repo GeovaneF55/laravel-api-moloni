@@ -14,7 +14,7 @@ class TokenManager
      * @param array $response
      * @return void
      */
-    public function setTokens(array $response)
+    public function setTokens($response = [])
     {
         if (isset($response['refresh_token'])) {
             $this->refreshToken = $response['refresh_token'];
