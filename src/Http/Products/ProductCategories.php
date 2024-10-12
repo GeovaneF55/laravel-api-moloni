@@ -1,7 +1,7 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni\Http\Products;
 
-use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
+use Geovanefss\LaravelApiMoloni\Http\Abstracts\ApiAbstract;
 
 class ProductCategories extends ApiAbstract
 {

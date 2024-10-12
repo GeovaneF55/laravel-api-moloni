@@ -1,8 +1,15 @@
 <?php
-namespace Geovanefss\LaravelApiMoloni\Http;
+namespace Geovanefss\LaravelApiMoloni\Http\Abstracts;
+
+use Geovanefss\LaravelApiMoloni\Http\ApiClient;
 
 abstract class ApiAbstract
 {
+    /**
+     * Api Client
+     *
+     * @var ApiClient $apiClient
+     */
     protected $apiClient;
 
     /**

@@ -5,6 +5,7 @@ namespace Geovanefss\LaravelApiMoloni;
 use Geovanefss\LaravelApiMoloni\Http\AccountAndProfile\MyProfile;
 // APIs' CLIENT
 use Geovanefss\LaravelApiMoloni\Http\ApiClient;
+use Geovanefss\LaravelApiMoloni\Http\Auth\Authorize;
 // COMPANY
 use Geovanefss\LaravelApiMoloni\Http\Company\Company;
 use Geovanefss\LaravelApiMoloni\Http\Company\Subscription;
@@ -105,6 +106,19 @@ class Moloni
     public function stopDebug()
     {
         $this->apiClient->setDebug(false);
+    }
+
+    // AUTH
+
+    /**
+     * Authorize API
+     *
+     * @param array $query
+     * @return mixed
+     */
+    public function authorize(array $query)
+    {
+        return $this->apiClient->authorize($query);
     }
 
     // ACCOUNT AND PROFILE

@@ -3,6 +3,9 @@ namespace Geovanefss\LaravelApiMoloni\Http;
 
 use GuzzleHttp\Client;
 use Geovanefss\LaravelApiMoloni\Exceptions\ApiException;
+use Geovanefss\LaravelApiMoloni\Exceptions\ValidationException;
+use Geovanefss\LaravelApiMoloni\Validators\Validator;
+use GuzzleHttp\RequestOptions;
 
 class HttpClient
 {
@@ -21,11 +24,18 @@ class HttpClient
     protected $client;
 
     /**
-     * Access Token
+     * Validator
      *
-     * @var string $accessToken
+     * @var Validator $validator
      */
-    protected $accessToken;
+    protected $validator;
+
+    /**
+     * Token Manager
+     *
+     * @var TokenManager $tokenManager
+     */
+    protected $tokenManager;
 
     /**
      * Debug
@@ -44,8 +54,22 @@ class HttpClient
     {
         $this->baseUrl = $baseUrl;
         $this->debug = $debug;
+        $this->validator = new Validator();
 
         $this->startClient();
+    }
+
+    /**
+     * Validate
+     *
+     * @param array $rules
+     * @param array $data
+     * @return boolean
+     * @throws ValidationException
+     */
+    public function validate(array $rules, array $data): bool
+    {
+        return $this->validator->validate($rules, $data);
     }
 
     /**
@@ -77,14 +101,14 @@ class HttpClient
     }
 
     /**
-     * Set Access Token
+     * Set Token Manager
      *
-     * @param string $accessToken
+     * @param TokenManager $tokenManager
      * @return void
      */
-    public function setAccessToken(string $accessToken)
+    public function setTokenManager(TokenManager $tokenManager)
     {
-        $this->accessToken = $accessToken;
+        $this->tokenManager = $tokenManager;
     }
 
     /**
@@ -95,17 +119,17 @@ class HttpClient
      */
     public function getProcessedOptions(array $options): array
     {
-        if ($this->accessToken) {
+        if ($this->tokenManager->getAccessToken()) {
             $options = array_merge_recursive($options, [
-                'query' => [
-                    'access_token' => $this->accessToken
+                RequestOptions::QUERY => [
+                    'access_token' => $this->tokenManager->getAccessToken()
                 ]
             ]);
         }
 
         $options = array_merge_recursive($options, [
-            'query' => [
-                'json' => true
+            RequestOptions::QUERY => [
+                RequestOptions::JSON => true
             ],
             'debug' => $this->debug
         ]);
@@ -149,7 +173,9 @@ class HttpClient
      */
     public function get(string $endpoint, array $query = [])
     {
-        return $this->request('GET', $endpoint, ['query' => $query]);
+        return $this->request('GET', $endpoint, [
+            RequestOptions::QUERY => $query
+        ]);
     }
 
     /**
@@ -164,8 +190,8 @@ class HttpClient
     public function post(string $endpoint, array $data = [], array $query = [])
     {
         return $this->request('POST', $endpoint, [
-            'json' => $data,
-            'query' => $query
+            RequestOptions::JSON => $data,
+            RequestOptions::QUERY => $query
         ]);
     }
 }

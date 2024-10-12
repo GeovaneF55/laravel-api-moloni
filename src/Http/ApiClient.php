@@ -5,9 +5,10 @@ use Exception;
 use Geovanefss\LaravelApiMoloni\Exceptions\ApiException;
 use Geovanefss\LaravelApiMoloni\Exceptions\TokenException;
 use Geovanefss\LaravelApiMoloni\Exceptions\ValidationException;
+use Geovanefss\LaravelApiMoloni\Http\Auth\Authorize;
+use Geovanefss\LaravelApiMoloni\Http\Auth\Grant;
 use Geovanefss\LaravelApiMoloni\Http\HttpClient;
 use Geovanefss\LaravelApiMoloni\Http\TokenManager;
-use Geovanefss\LaravelApiMoloni\Validators\Validator;
 use GuzzleHttp\RequestOptions;
 
 class ApiClient
@@ -27,13 +28,6 @@ class ApiClient
     protected $tokenManager;
 
     /**
-     * Validator
-     *
-     * @var Validator $validator
-     */
-    protected $validator;
-
-    /**
      * Base URL
      *
      * @var string $baseUrl
@@ -41,60 +35,11 @@ class ApiClient
     protected $baseUrl;
 
     /**
-     * Grant type
+     * Configs
      *
-     * @var string $grantType
+     * @var array $configs
      */
-    protected $grantType;
-
-    /**
-     * Grant type
-     *
-     * @var string $grantType
-     */
-    protected $clientId;
-
-    /**
-     * Client Secret
-     *
-     * @var string $clientSecret
-     */
-    protected $clientSecret;
-
-    /**
-     * Response Type
-     *
-     * @var string $responseType
-     */
-    protected $responseType;
-
-    /**
-     * Redirect URI
-     *
-     * @var string $redirectUri
-     */
-    protected $redirectUri;
-
-    /**
-     * Authorization Code
-     *
-     * @var string $authorizationCode
-     */
-    protected $authorizationCode;
-
-    /**
-     * Username
-     *
-     * @var string $username
-     */
-    protected $username;
-
-    /**
-     * Password
-     *
-     * @var string $password
-     */
-    protected $password;
+    protected $configs;
 
     /**
      * Debug
@@ -114,28 +59,9 @@ class ApiClient
         $this->debug = false;
 
         $this->httpClient = new HttpClient($this->baseUrl, $this->debug);
-        $this->tokenManager = new TokenManager();
-        $this->validator = new Validator();
+        $this->configs = $configs;
 
-        $this->setConfigs($configs);
-    }
-
-    /**
-     * Set Moloni Configurations
-     *
-     * @param array $configs
-     * @return void
-     */
-    private function setConfigs(array $configs): void
-    {
-        $this->grantType = $configs['grant_type'] ?? null; 
-        $this->clientId = $configs['client_id'] ?? null;
-        $this->clientSecret = $configs['client_secret'] ?? null;
-        $this->responseType = $configs['response_type'] ?? null;
-        $this->redirectUri = $configs['redirect_uri'] ?? null;
-        $this->authorizationCode = $configs['authorization_code'] ?? null;
-        $this->username = $configs['username'] ?? null;
-        $this->password = $configs['password'] ?? null;
+        $this->setTokenManager();
     }
 
     /**
@@ -151,6 +77,19 @@ class ApiClient
     }
 
     /**
+     * Set Token Manager
+     *
+     * @param string $accessToken
+     * @param string $refreshToken
+     * @return void
+     */
+    public function setTokenManager(string $accessToken = '', string $refreshToken = '')
+    {
+        $this->tokenManager = new TokenManager($accessToken, $refreshToken);
+        $this->httpClient->setTokenManager($this->tokenManager);
+    }
+
+    /**
      * Validate
      *
      * @param array $rules
@@ -160,7 +99,7 @@ class ApiClient
      */
     public function validate(array $rules, array $data): bool
     {
-        return $this->validator->validate($rules, $data);
+        return $this->httpClient->validate($rules, $data);
     }
 
     /**
@@ -169,57 +108,9 @@ class ApiClient
      * @return mixed
      * @throws ApiException|ValidationException|TokenException
      */
-    private function authorize()
+    public function authorize(): Authorize
     {
-        $rules = [
-            'response_type' => ['required', 'string', 'enum:code'],
-            'client_id' => ['required', 'string'],
-            'redirect_uri' => ['required', 'string', 'url']
-        ];
-
-        $query = [
-            'response_type' => $this->responseType,
-            'client_id' => $this->clientId,
-            'redirect_uri' => $this->redirectUri
-        ];
-
-        $this->validate($rules, $query);
-        $response = $this->httpClient->post('authorize', [], $query);
-
-        $this->tokenManager->setTokens($response);
-        $this->httpClient->setAccessToken($this->tokenManager->getAccessToken());
-
-        return $response;
-    }
-
-    /**
-     * Grant
-     *
-     * @param array $options
-     * @return mixed
-     * @throws ApiException|ValidationException|TokenException
-     */
-    private function grant(array $query)
-    {
-        $rules = [
-            'grant_type' => ['required', 'string', 'enum:password,authorization_code,refresh_token'],
-            'client_id' => ['required', 'numeric'],
-            'client_secret' => ['required', 'string']
-        ];
-
-        $query = array_merge([
-            'client_id' => $this->clientId,
-            'client_secret' => $this->clientSecret
-        ], $query);
-
-        $this->validate($rules, $query);
-
-        $response = $this->httpClient->post('grant', [], $query);
-
-        $this->tokenManager->setTokens($response);
-        $this->httpClient->setAccessToken($this->tokenManager->getAccessToken());
-
-        return $response;
+        return (new Authorize($this->httpClient))->authorize($this->configs);
     }
 
     /**
@@ -230,20 +121,12 @@ class ApiClient
      */
     private function grantByPassword()
     {
-        $rules = [
-            'grant_type' => ['required', 'string', 'enum:password'],
-            'username' => ['required', 'string', 'min:3', 'max:255'],
-            'password' => ['required', 'string', 'min:3', 'max:255']
-        ];
+        $response = (new Grant($this->httpClient))->grantByPassword($this->configs);
 
-        $query = [
-            'grant_type' => 'password',
-            'username' => $this->username,
-            'password' => $this->password
-        ];
+        $this->tokenManager->setTokens($response);
+        $this->httpClient->setTokenManager($this->tokenManager);
 
-        $this->validate($rules, $query);
-        return $this->grant($query);
+        return $response;
     }
 
     /**
@@ -254,20 +137,7 @@ class ApiClient
      */
     private function grantByAuthCode()
     {
-        $rules = [
-            'grant_type' => ['required', 'string', 'enum:authorization_code'],
-            'redirect_uri' => ['required', 'string', 'url'],
-            'code' => ['required', 'string', 'min:3', 'max:255']
-        ];
-
-        $query = [
-            'grant_type' => 'authorization_code',
-            'redirect_uri' => $this->redirectUri,
-            'code' => $this->authorizationCode
-        ];
-
-        $this->validate($rules, $query);
-        return $this->grant($query);
+        return (new Grant($this->httpClient))->grantByAuthCode($this->configs);
     }
 
     /**
@@ -278,18 +148,7 @@ class ApiClient
      */
     private function grantByRefreshToken()
     {
-        $rules = [
-            'grant_type' => ['required', 'string', 'enum:refresh_token'],
-            'refresh_token' => ['required', 'string']
-        ];
-
-        $query = [
-            'grant_type' => 'refresh_token',
-            'refresh_token' => $this->tokenManager->getRefreshToken()
-        ];
-
-        $this->validate($rules, $query);
-        return $this->grant($query);
+        return (new Grant($this->httpClient))->grantByRefreshToken($this->configs);
     }
 
     /**
@@ -300,17 +159,22 @@ class ApiClient
      */
     private function authOrGrant()
     {
-        switch($this->grantType) {
+        $rules = [
+            'grant_type' => ['required', 'string', 'enum:authorize,password,authorization_code,refresh_token'],
+        ];
+
+        $this->validate($rules, $this->configs);
+
+        switch ($this->configs['grant_type']) {
             case 'password':
                 return $this->grantByPassword();
             case 'authorization_code':
-                // TODO: return $this->grantByAuthCode();
-                throw new TokenException('Grant by Auth Code is not implemented yet');
+                return $this->grantByAuthCode();
             case 'refresh_token':
                 return $this->grantByRefreshToken();
+            case 'authorize':
             default:
-                // TODO: return $this->authorize();
-                throw new TokenException('authorize is not implemented yet');
+                return $this->authorize();
         }
     }
 

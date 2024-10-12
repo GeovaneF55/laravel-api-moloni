@@ -1,7 +1,7 @@
 <?php
 namespace Geovanefss\LaravelApiMoloni\Http\GlobalData;
 
-use Geovanefss\LaravelApiMoloni\Http\ApiAbstract;
+use Geovanefss\LaravelApiMoloni\Http\Abstracts\ApiAbstract;
 
 class Countries extends ApiAbstract
 {
