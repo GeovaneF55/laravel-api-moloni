@@ -82,10 +82,33 @@ class Moloni
      * Constructor
      *
      * @param array $configs
+     * @param string $apiVersion
      */
-    public function __construct(array $configs, $apiVersion = 'v1')
+    public function __construct(array $configs = [], $apiVersion = 'v1')
     {
         $this->apiClient = new ApiClient($configs, $apiVersion);
+    }
+
+    /**
+     * Get Base Url
+     *
+     * @param bool $debug
+     * @return string
+     */
+    public function getBaseUrl(): string
+    {
+        return $this->apiClient->getBaseUrl();
+    }
+
+    /**
+     * Set Configs
+     *
+     * @param array $configs
+     * @return void
+     */
+    public function setConfigs(array $configs): void
+    {
+        $this->apiClient->setConfigs($configs);
     }
 
     /**
@@ -98,6 +121,26 @@ class Moloni
     public function setTokens(string $accessToken, string $refreshToken)
     {
         $this->apiClient->setTokenManager($accessToken, $refreshToken);
+    }
+
+    /**
+     * Get Access Token
+     *
+     * @return void
+     */
+    public function getAccessToken()
+    {
+        return $this->apiClient->getTokenManager()->getAccessToken();
+    }
+
+    /**
+     * Get Refresh Token
+     *
+     * @return void
+     */
+    public function getRefreshToken()
+    {
+        return $this->apiClient->getTokenManager()->getRefreshToken();
     }
 
     /**
@@ -149,45 +192,41 @@ class Moloni
     /**
      * Authorize API
      *
-     * @param array $query
      * @return mixed
      */
-    public function authorize(array $query)
+    public function authorize()
     {
-        return $this->apiClient->authorize($query);
+        return $this->apiClient->authorize();
     }
 
     /**
      * Grant By Password API
      *
-     * @param array $query
      * @return mixed
      */
-    public function grantByPassword(array $query)
+    public function grantByPassword()
     {
-        return $this->apiClient->grantByPassword($query);
+        return $this->apiClient->grantByPassword();
     }
 
     /**
      * Grant By Auth Code API
      *
-     * @param array $query
      * @return mixed
      */
-    public function grantByAuthCode(array $query)
+    public function grantByAuthCode()
     {
-        return $this->apiClient->grantByAuthCode($query);
+        return $this->apiClient->grantByAuthCode();
     }
 
     /**
      * Grant By Refresh Token API
      *
-     * @param array $query
      * @return mixed
      */
-    public function grantByRefreshToken(array $query)
+    public function grantByRefreshToken()
     {
-        return $this->apiClient->grantByRefreshToken($query);
+        return $this->apiClient->grantByRefreshToken();
     }
 
     // ACCOUNT AND PROFILE

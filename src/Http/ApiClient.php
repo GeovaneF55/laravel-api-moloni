@@ -60,7 +60,7 @@ class ApiClient
      *
      * @param array $configs
      */
-    public function __construct(array $configs, $apiVersion = 'v1')
+    public function __construct(array $configs = [], $apiVersion = 'v1')
     {
         $this->baseUrl = 'https://api.moloni.pt/' . $apiVersion . '/';
 
@@ -71,6 +71,28 @@ class ApiClient
         $this->configs = $configs;
 
         $this->setTokenManager();
+    }
+
+    /**
+     * Get Base Url
+     *
+     * @param bool $debug
+     * @return string
+     */
+    public function getBaseUrl(): string
+    {
+        return $this->baseUrl;
+    }
+
+    /**
+     * Set Configs
+     *
+     * @param array $configs
+     * @return void
+     */
+    public function setConfigs(array $configs): void
+    {
+        $this->configs = $configs;
     }
 
     /**
@@ -110,6 +132,16 @@ class ApiClient
     {
         $this->tokenManager = new TokenManager($accessToken, $refreshToken);
         $this->httpClient->setTokenManager($this->tokenManager);
+    }
+
+    /**
+     * Get Token Manager
+     *
+     * @return TokenManager
+     */
+    public function getTokenManager()
+    {
+        return $this->tokenManager;
     }
 
     /**

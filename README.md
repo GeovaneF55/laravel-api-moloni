@@ -66,7 +66,7 @@ try {
         // Required (for authorize)
         'response_type' => getenv('MOLONI_RESPONSE_TYPE'),
         
-        // Required (for grant_type: authorization_code)
+        // Required (for authorize and grant_type: authorization_code)
         'redirect_uri' => getenv('MOLONI_REDIRECT_URI'),
 
         // Required (for grant_type: authorization_code)
