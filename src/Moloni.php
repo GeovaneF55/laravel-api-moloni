@@ -98,11 +98,6 @@ class Moloni
     public function setConfigs(array $configs)
     {
         $this->apiClient->setConfigs($configs);
-
-        if (!empty($configs['access_token']) && !empty($configs['refresh_token'])) {
-            $this->setTokens($configs['access_token'], $configs['refresh_token']);
-        }
-
         return $this;
     }
 

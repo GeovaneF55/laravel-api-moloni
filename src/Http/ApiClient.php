@@ -68,9 +68,7 @@ class ApiClient
         $this->setValidate(true);
 
         $this->httpClient = new HttpClient($this->baseUrl, $this->debug);
-        $this->configs = $configs;
-
-        $this->setTokenManager();
+        $this->setConfigs($configs);
     }
 
     /**
@@ -82,6 +80,12 @@ class ApiClient
     public function setConfigs(array $configs)
     {
         $this->configs = $configs;
+        
+        $accessToken = !empty($configs['access_token']) ? $configs['access_token'] : '';
+        $refreshToken = !empty($configs['refresh_token']) ? $configs['refresh_token'] : '';
+
+        $this->setTokenManager($accessToken, $refreshToken);
+
         return $this;
     }
 
