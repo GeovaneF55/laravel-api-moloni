@@ -75,7 +75,7 @@ class HttpClient
     /**
      * Start Client
      *
-     * @return void
+     * @return HttpClient
      */
     protected function startClient()
     {
@@ -83,6 +83,8 @@ class HttpClient
             'base_uri' => $this->baseUrl,
             'http_errors' => $this->debug
         ]);
+
+        return $this;
     }
 
     /**
@@ -90,25 +92,26 @@ class HttpClient
      *
      * @param string $baseUrl
      * @param bool $debug
-     * @return void
+     * @return HttpClient
      */
     public function restartClient(string $baseUrl, bool $debug = false)
     {
         $this->baseUrl = $baseUrl;
         $this->debug = $debug;
         
-        $this->startClient();
+        return $this->startClient();
     }
 
     /**
      * Set Token Manager
      *
      * @param TokenManager $tokenManager
-     * @return void
+     * @return HttpClient
      */
     public function setTokenManager(TokenManager $tokenManager)
     {
         $this->tokenManager = $tokenManager;
+        return $this;
     }
 
     /**

@@ -74,6 +74,61 @@ class ApiClient
     }
 
     /**
+     * Set Configs
+     *
+     * @param array $configs
+     * @return ApiClient
+     */
+    public function setConfigs(array $configs)
+    {
+        $this->configs = $configs;
+        return $this;
+    }
+
+    /**
+     * Set Guzzle Debug
+     *
+     * @param bool $debug
+     * @return ApiClient
+     */
+    public function setDebug(bool $debug)
+    {
+        $this->debug = $debug;
+
+        if (!empty($this->httpClient)) {
+            $this->httpClient->restartClient($this->baseUrl, $this->debug);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Set Validate
+     *
+     * @param bool $validate
+     * @return ApiClient
+     */
+    public function setValidate(bool $validate)
+    {
+        $this->validate = $validate;
+        return $this;
+    }
+
+    /**
+     * Set Token Manager
+     *
+     * @param string $accessToken
+     * @param string $refreshToken
+     * @return ApiClient
+     */
+    public function setTokenManager(string $accessToken = '', string $refreshToken = '')
+    {
+        $this->tokenManager = new TokenManager($accessToken, $refreshToken);
+        $this->httpClient->setTokenManager($this->tokenManager);
+        return $this;
+    }
+
+    /**
      * Get Base Url
      *
      * @param bool $debug
@@ -82,56 +137,6 @@ class ApiClient
     public function getBaseUrl(): string
     {
         return $this->baseUrl;
-    }
-
-    /**
-     * Set Configs
-     *
-     * @param array $configs
-     * @return void
-     */
-    public function setConfigs(array $configs): void
-    {
-        $this->configs = $configs;
-    }
-
-    /**
-     * Set Guzzle Debug
-     *
-     * @param bool $debug
-     * @return void
-     */
-    public function setDebug(bool $debug): void
-    {
-        $this->debug = $debug;
-
-        if (!empty($this->httpClient)) {
-            $this->httpClient->restartClient($this->baseUrl, $this->debug);
-        }
-    }
-
-    /**
-     * Set Validate
-     *
-     * @param bool $validate
-     * @return void
-     */
-    public function setValidate(bool $validate): void
-    {
-        $this->validate = $validate;
-    }
-
-    /**
-     * Set Token Manager
-     *
-     * @param string $accessToken
-     * @param string $refreshToken
-     * @return void
-     */
-    public function setTokenManager(string $accessToken = '', string $refreshToken = '')
-    {
-        $this->tokenManager = new TokenManager($accessToken, $refreshToken);
-        $this->httpClient->setTokenManager($this->tokenManager);
     }
 
     /**
@@ -196,7 +201,12 @@ class ApiClient
      */
     public function grantByAuthCode()
     {
-        return (new Grant($this->httpClient))->grantByAuthCode($this->configs);
+        $response = (new Grant($this->httpClient))->grantByAuthCode($this->configs);
+
+        $this->tokenManager->setTokens($response);
+        $this->httpClient->setTokenManager($this->tokenManager);
+
+        return $response;
     }
 
     /**
@@ -221,15 +231,17 @@ class ApiClient
      * @return mixed
      * @throws ApiException|ValidationException|TokenException
      */
-    private function passwordOrRefresh()
+    private function authenticate()
     {
         $rules = [
-            'grant_type' => ['required', 'string', 'enum:password,refresh_token'],
+            'grant_type' => ['required', 'string', 'enum:authorization_code,refresh_token,password'],
         ];
 
         $this->validate($rules, $this->configs);
 
         switch ($this->configs['grant_type']) {
+            case 'authorization_code':
+                return $this->grantByAuthCode();
             case 'refresh_token':
                 return $this->grantByRefreshToken();
             case 'password':
@@ -286,14 +298,14 @@ class ApiClient
     {
         try {
             if (empty($this->tokenManager->getAccessToken())) {
-                $this->passwordOrRefresh();
+                $this->authenticate();
             }
 
             return $this->httpClient->request($method, $endpoint, $options);
         } catch (ApiException | ValidationException | TokenException $e) {
             if ($retry > 0 && in_array($e->getCode(), [401, 404, 429, 503])) {
                 // Retry on certain status codes
-                $this->passwordOrRefresh();
+                $this->authenticate();
                 return $this->requestWithRetry($method, $endpoint, $options, $retry - 1);
             }
 

@@ -90,6 +90,36 @@ class Moloni
     }
 
     /**
+     * Set Configs
+     *
+     * @param array $configs
+     * @return Moloni
+     */
+    public function setConfigs(array $configs)
+    {
+        $this->apiClient->setConfigs($configs);
+
+        if (!empty($configs['access_token']) && !empty($configs['refresh_token'])) {
+            $this->setTokens($configs['access_token'], $configs['refresh_token']);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Set Tokens
+     *
+     * @param string $accessToken
+     * @param string $refreshToken
+     * @return Moloni
+     */
+    public function setTokens(string $accessToken, string $refreshToken)
+    {
+        $this->apiClient->setTokenManager($accessToken, $refreshToken);
+        return $this;
+    }
+
+    /**
      * Get Base Url
      *
      * @param bool $debug
@@ -101,32 +131,9 @@ class Moloni
     }
 
     /**
-     * Set Configs
-     *
-     * @param array $configs
-     * @return void
-     */
-    public function setConfigs(array $configs): void
-    {
-        $this->apiClient->setConfigs($configs);
-    }
-
-    /**
-     * Set Tokens
-     *
-     * @param string $accessToken
-     * @param string $refreshToken
-     * @return void
-     */
-    public function setTokens(string $accessToken, string $refreshToken)
-    {
-        $this->apiClient->setTokenManager($accessToken, $refreshToken);
-    }
-
-    /**
      * Get Access Token
      *
-     * @return void
+     * @return string
      */
     public function getAccessToken()
     {
@@ -136,7 +143,7 @@ class Moloni
     /**
      * Get Refresh Token
      *
-     * @return void
+     * @return string
      */
     public function getRefreshToken()
     {
